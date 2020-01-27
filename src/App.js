@@ -33,7 +33,6 @@ const initialState = {
 function reducer(state, action) {
   switch (action.type) {
     case 'openModal':
-      console.log('modalType', action.modalType)
       return {modalOpen: true, modalType: action.modalType, modalData: action.modalData}
     case 'closeModal':
       return {modalOpen: false, modalData: action.modalData}
