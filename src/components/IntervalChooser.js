@@ -12,7 +12,7 @@ const DropDown = styled.select`
     border-radius: 8px;
     appearance: none;
     background-color: #fff;
-.select-css::-ms-expand {
+/* .select-css::-ms-expand {
     display: none;
 }
 .select-css:hover {
@@ -27,22 +27,21 @@ const DropDown = styled.select`
 }
 .select-css option {
     font-weight:normal;
-}
-
+} */
 `
 
 const IntervalChooser = (props) => {
-    return(
-      <DropDown>
-        <option value="volvo">Every 30 minutes</option>
-        <option value="saab">Every Hour</option>
-        <option value="mercedes">Every 2 Hours</option>
-        <option value="audi">Every 6 Hours</option>
-        <option value="audi">Every 8 Hours</option>
-        <option value="audi">Every 12 Hours</option>
-        <option value="audi">Every 24 Hours</option>
-      </DropDown>
-    )
+  return(
+    <DropDown>
+      <option value="30">Every 30 minutes</option>
+      <option value="1">Every Hour</option>
+      <option value="2">Every 2 Hours</option>
+      <option value="6">Every 6 Hours</option>
+      <option value="8">Every 8 Hours</option>
+      <option value="12">Every 12 Hours</option>
+      <option value="24">Every 24 Hours</option>
+    </DropDown>
+  )
 }
 
 export default IntervalChooser
