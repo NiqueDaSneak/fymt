@@ -1,4 +1,5 @@
 import React from 'react'
+imp
 import DateTimePicker from 'react-datetime-picker/dist/entry.nostyle'
 
 const TimeChooser = (props) => {
@@ -6,12 +7,16 @@ const TimeChooser = (props) => {
     date: new Date(),
   }
  
-  const onChange = date => this.setState({ date })
+  // const onChange = date => this.setState({ date })
     return(
       <>
-        <DateTimePicker
-          onChange={onChange}
-          value={state.date} />
+        <input 
+          type="datetime-local" 
+          id="meeting-time"
+          name="meeting-time" 
+          value="2018-06-12T19:30"
+          min="2018-06-07T00:00" 
+          max="2018-06-14T00:00" />
       </>
     )
 }
