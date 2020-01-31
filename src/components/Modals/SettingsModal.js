@@ -7,7 +7,7 @@ import Switch from '../ui/Switch'
 const Container = styled.div`
   height: 40%;
   width: 100%;
-  background-color: red;
+  background-color: white;
   position: fixed;
   bottom: ${props => props.active ? '0' : '-50%;'};
   left: 0;
@@ -19,8 +19,9 @@ const Container = styled.div`
   align-items: center;
   justify-content: space-between;
   padding-top: 10%;
-
-  
+  p {
+    font-weight: 600;
+  }
 `
 
 const HeaderIcon = styled.img.attrs(props => ({

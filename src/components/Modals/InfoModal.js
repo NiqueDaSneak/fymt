@@ -3,7 +3,7 @@ import styled from 'styled-components'
 
 const Container = styled.div`
   width: 100%;
-  background-color: red;
+  background-color: black;
   position: fixed;
   bottom: ${props => props.active ? '0' : '-50%;'};
   left: 0;
@@ -15,6 +15,7 @@ const Container = styled.div`
 const Copy = styled.p`
   padding: 4%;
   font-size: 12pt;
+  color: white;
 `
 
 const SettingsModal = props => {

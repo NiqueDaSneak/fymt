@@ -7,7 +7,7 @@ import IntervalChooser from '../ui/IntervalChooser'
 const Container = styled.div`
   height: 60%;
   width: 100%;
-  background-color: red;
+  background-color: white;
   position: fixed;
   bottom: ${props => props.active ? '0' : '-60%;'};
   left: 0;
@@ -31,7 +31,9 @@ const Heading = styled.p`
   text-align: justify;
 `
 
-const Label = styled.p``
+const Label = styled.p`
+  font-weight: 600;
+`
 
 const AlertsModal = props => {
   return(

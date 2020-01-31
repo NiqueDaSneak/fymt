@@ -3,11 +3,11 @@ import styled from 'styled-components'
 import Images from '../../assets/imgs'
 
 const Container = styled.div`
+  background-color: #ffffff6b;
+  backdrop-filter: blur(4px);
   height: 10%;
   width: 100%;
-  position: fixed;
-  bottom: 0;
-  left: 0;
+  box-shadow: 0px -1px 4px 0px rgba(0,0,0,0.75);
   display: flex;
   justify-content: space-evenly;
 `

@@ -38,15 +38,15 @@ const SoundToggle = (props) => {
     <Container>
       <IconContainer >
         <Icon ocean/>
-        <p>Label</p>
+        <p>Ocean</p>
       </IconContainer>
       <IconContainer >
         <Icon forest/>
-        <p>Label</p>
+        <p>Forest</p>
       </IconContainer>
       <IconContainer >
         <Icon rain/>
-        <p>Label</p>
+        <p>Rain</p>
       </IconContainer>
     </Container>
   )

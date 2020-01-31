@@ -6,7 +6,7 @@ const Container = styled.div`
   flex-flow: wrap;
   width: 100%;
   justify-content: space-evenly;
-  background-color: red;
+  background-color: black;
   position: fixed;
   bottom: ${props => props.active ? '0' : '-70%;'};
   left: 0;
@@ -16,7 +16,7 @@ const Container = styled.div`
 `
 
 const Tag = styled.span`
-  background-color: yellow;
+  background-color: white;
   font-size: 12pt;
   padding: 3%;
   border-radius: 24px;
