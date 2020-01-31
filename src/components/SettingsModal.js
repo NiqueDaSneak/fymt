@@ -33,9 +33,9 @@ const SettingsModal = props => {
   return(
     <Container active={props.active}>
       <HeaderIcon/>
-      <p>Toggle Heading</p>
+      <p>Toggle Sound</p>
       <Switch />
-      <p>Sound Change Heading</p>
+      <p>Choose A Sound Option</p>
       <SoundToggle />
     </Container>
   )
