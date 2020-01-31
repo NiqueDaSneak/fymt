@@ -5,7 +5,6 @@ import Images from '../assets/imgs'
 const Container = styled.div`
   height: 10%;
   width: 100%;
-  /* background-color: green; */
   position: fixed;
   bottom: 0;
   left: 0;
@@ -19,7 +18,6 @@ const IconContainer = styled.div`
   justify-content: center;
   width: 30%;
   &:nth-of-type(2) {
-    /* background-color: purple; */
     border-left: 1px solid black;
     border-right: 1px solid black;
   }

@@ -4,6 +4,7 @@ import search from './search.svg'
 import trees from './trees.svg'
 import umbrella from './umbrella.svg'
 import wheel from './wheel.svg'
+import question from './question.svg'
 
 const Images = {
   alert: bell,
@@ -12,6 +13,7 @@ const Images = {
   forest: trees,
   rain: umbrella,
   ocean: wheel,
+  question: question
 }
 
 export default Images
