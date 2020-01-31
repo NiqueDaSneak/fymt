@@ -1,8 +1,8 @@
 import React from 'react'
 import styled from 'styled-components'
-import Images from '../assets/imgs'
-import SoundToggle from './SoundToggle'
-import Switch from './Switch'
+import Images from '../../assets/imgs'
+import SoundToggle from '../ui/SoundToggle'
+import Switch from '../ui/Switch'
 
 const Container = styled.div`
   height: 40%;

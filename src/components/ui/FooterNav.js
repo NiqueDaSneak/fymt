@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import Images from '../assets/imgs'
+import Images from '../../assets/imgs'
 
 const Container = styled.div`
   height: 10%;

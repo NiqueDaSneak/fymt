@@ -1,7 +1,7 @@
 import React, {useReducer} from 'react';
 import styled, {createGlobalStyle} from 'styled-components'
-import FooterNav from './components/FooterNav'
-import Modal from './components/Modal';
+import FooterNav from './components/ui/FooterNav'
+import Modal from './components/Modals/Modal';
 import Images from './assets/imgs';
 
 const GlobalStyle = createGlobalStyle`

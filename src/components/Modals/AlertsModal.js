@@ -1,8 +1,8 @@
 import React from 'react'
 import styled from 'styled-components'
-import Images from '../assets/imgs'
-import Switch from './Switch'
-import IntervalChooser from './IntervalChooser'
+import Images from '../../assets/imgs'
+import Switch from '../ui/Switch'
+import IntervalChooser from '../ui/IntervalChooser'
 
 const Container = styled.div`
   height: 60%;

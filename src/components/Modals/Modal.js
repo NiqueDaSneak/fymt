@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import Portal from './Portal'
+import Portal from '../hoc/Portal'
 import SettingsModal from './SettingsModal'
 import AlertsModal from './AlertsModal'
 import SearchModal from './SearchModal'
