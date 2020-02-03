@@ -5,6 +5,7 @@ import Modal from './components/Modals/Modal';
 import Images from './assets/imgs';
 import BackgroundImageController from './components/hoc/BackgroundImageController'
 import Header from './components/ui/Header'
+import Carosel from './components/ui/Carosel';
 
 const GlobalStyle = createGlobalStyle`
   * { padding: 0; margin: 0; }
@@ -73,11 +74,12 @@ const App = () => {
           modalData={state.modalData} />
       <BackgroundImageController>
       <Header />
-        <BlurredCard>
+      <Carosel />
+        {/* <BlurredCard>
           <AffirmationText>This is the affirmation statement; more text for the longest possbile version.</AffirmationText>
           <InfoIcon onClick={() => dispatch({type: 'openModal', modalType: 'INFO_MODAL'})}/>
         </BlurredCard>
-        <FooterNav openModal={(type) => dispatch({type: 'openModal', modalType: type})} />
+        <FooterNav openModal={(type) => dispatch({type: 'openModal', modalType: type})} /> */}
       </BackgroundImageController>
     </>
   );

@@ -9,6 +9,7 @@ const Container = styled.div`
   background-image: ${props => `url(${props.image})`};
   display: flex;
   flex-direction: column;
+  /* align-items: center; */
   justify-content: space-between;
 `
 const BackgroundImageController = props => {
