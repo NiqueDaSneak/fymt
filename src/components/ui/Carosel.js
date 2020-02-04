@@ -1,47 +1,32 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
 import Images from '../../assets/imgs'
-import FooterNav from './FooterNav'
 
 const Container = styled.div`
   display: flex;
   flex-direction: column;
   background-color: #ffffff6b;
   backdrop-filter: blur(18px);
-  /* align-items: center;
-  height: auto; */
-`
-
-const Module = styled.div`
-  width: 100vw;
-  height: 40vh;
-  background-color: ${props => props.color};
 `
 
 const Dots = styled.div`
   width: 24vw;
-  /* height: 3vh;  */
-  /* background-color: green; */
   display: flex;
   justify-content: space-evenly;
   align-items: center;
-  /* border-radius: 14px 14px 0 0; */
   span {
     width: 4vw;
-  height: 4vw;
+    height: 4vw;
     background-color: grey;
     display: inline-block;
     border-radius: 10px;
-}
+  }
 `
-
-const colorMap = ['green', 'red', 'blue','pink']
 
 const ModalNav = styled.div`
   display: flex;
   width: 100vw;
   justify-content: space-evenly;
-  /* background-color: white; */
   padding-top: 4%;
   height: 4vh;
   padding-bottom: 2%;
@@ -51,121 +36,45 @@ const Chevron = styled.img.attrs({
   src: Images.chevron
 })`
   width: 10vw;
-  /* ${props => props.left ? 'transform: rotateY(-180deg)' : 'transform: rotateY(0)'} */
   transform: ${props => props.left ? 'rotate(180deg)' : null};
 `
 
-const CategoryTitle = styled.p``
+const CategoryTitle = styled.p`
+  font-size: 12pt;
+`
 
 const AffirmationModule = styled.div`
-  /* background-color: #ffffff6b;
-  backdrop-filter: blur(18px); */
   height: 36vh;
   justify-content: space-evenly;
-  /* background-color: white; */
   display: flex;
   flex-direction: column;
   align-items: center; 
-  /* padding-top: 4%; */
 `
-
-const IconContainer = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 30%;
-  &:nth-of-type(2) {
-    /* border-left: 1px solid black;
-    border-right: 1px solid black; */
-  }
-`
-
-// const BlurredCard = styled.div`
-//   display: flex;
-//   flex-direction: column;
-//   align-items: center;
-//   background-color: #ffffff6b;
-//   backdrop-filter: blur(8px);
-//   height: 30%;
-//   justify-content: space-evenly;
-//   box-shadow: 0px 1px 4px 0px rgba(0,0,0,0.75);
-// `
 
 const AffirmationText = styled.p`
   text-align: center;
   width: 90%;
   font-weight: 600;
   font-style: italic;
-  /* margin-top: 4%; */
   font-size: 16pt;
-    height: 10vh;
-`
-
-const InfoIcon = styled.img.attrs(props => ({
-  src: Images.question
-}))`
-  width: 10%;
-  /* margin-top: 10%; */
+  height: 10vh;
 `
 
 const Icon = styled.img.attrs(props => ({
   src: Images[props.icon]
 }))`
   width: 10vw;
-  /* margin-bottom: 20%; */
-  &:nth-of-type(2), &:nth-of-type(5) {
-    /* margin-left: 25%;
-    margin-right: 25%; */
-    /* border-left: 1px solid black;
-    border-right: 1px solid black; */
-  }
 `
 
-const iconSelector = (props) => {
-  if (props.settings) return Images.settings
-  if (props.search) return Images.search
-  if (props.alert) return Images.alert
-}
-
 const ButtonContainer = styled.div`
-    display: flex;
-    justify-content: space-evenly;
+  display: flex;
+  justify-content: space-evenly;
   width: 100%;
   height: 5vh;
-  `
+`
 
 const Carosel = props => {
   const [index, setIndex] = useState(0)
-  const [color, setColor] = useState(colorMap[index])
-
-  const toggleBackground = (index) => {
-    setIndex(index + 1)
-    if (index === 2) {
-      setIndex(0)
-    }
-    setColor(colorMap[index])
-  }
-const increment = () => {
-  setIndex(index + 1)
-  if (index === 2) {
-    setIndex(0)
-  }
-  setColor(colorMap[index])
-}
-
-  const decrement = () => {
-    setIndex(index - 1)
-    if (index === 0) {
-      setIndex(2)
-    }
-    setColor(colorMap[index])
-  }
-  
-  // const handlers = useSwipeable({ 
-  //   // onSwiped: (eventData) => toggleBackground(index)
-  //   onSwipedRight: increment,     // Fired after RIGHT swipe: 
-  //   onSwipedLeft: decrement,      // Fired after LEFT swipe
-  // })
 
   return(
     <Container>
@@ -178,41 +87,32 @@ const increment = () => {
         </Dots>
         <Chevron />
       </ModalNav>
-      {/* <Module color={color}> */}
-                {/* <BlurredCard> */}
-          <AffirmationModule>
-            <CategoryTitle>Fitness</CategoryTitle>
-            <AffirmationText>This is the affirmation statement; more text for the longest possbile version.</AffirmationText>
-            {/* <InfoIcon onClick={() => dispatch({type: 'openModal', modalType: 'INFO_MODAL'})}/> */}
-              <ButtonContainer>
-                <Icon 
-                onClick={() => props.openModal('INFO_MODAL')}
-                icon='info'/>
-                <Icon 
-                onClick={() => props.openModal('SETTINGS_MODAL')}
-                icon='change'/>
-                <Icon 
-                onClick={() => props.openModal('SEARCH_MODAL')}
-                icon='search'/>
-              </ButtonContainer>
-              <ButtonContainer>
-                <Icon 
-                onClick={() => props.openModal('ALERTS_MODAL')}
-                icon='alert'/>
-                <Icon 
-                onClick={() => props.openModal('SETTINGS_MODAL')}
-                icon='settings'/>
-                <Icon 
-                onClick={() => props.openModal('SETTINGS_MODAL')}
-                icon='profile'/>
-              </ButtonContainer>
-            {/* <IconContainer onClick={() => props.openModal('SETTINGS_MODAL')}><Icon settings/></IconContainer>
-            <IconContainer onClick={() => props.openModal('SEARCH_MODAL')}><Icon search/></IconContainer>
-            <IconContainer onClick={() => props.openModal('ALERTS_MODAL')}><Icon alert/></IconContainer> */}
-          </AffirmationModule>
-        {/* </BlurredCard> */}
-        {/* <FooterNav openModal={(type) => dispatch({type: 'openModal', modalType: type})} /> */}
-      {/* </Module> */}
+      <AffirmationModule>
+        <CategoryTitle>Fitness</CategoryTitle>
+        <AffirmationText>This is the affirmation statement; more text for the longest possbile version.</AffirmationText>
+          <ButtonContainer>
+            <Icon 
+              onClick={() => props.openModal('INFO_MODAL')}
+              icon='info'/>
+            <Icon 
+              onClick={() => props.openModal('SETTINGS_MODAL')}
+              icon='change'/>
+            <Icon 
+              onClick={() => props.openModal('SEARCH_MODAL')}
+              icon='search'/>
+          </ButtonContainer>
+          <ButtonContainer>
+            <Icon 
+              onClick={() => props.openModal('ALERTS_MODAL')}
+              icon='alert'/>
+            <Icon 
+              onClick={() => props.openModal('SETTINGS_MODAL')}
+              icon='settings'/>
+            <Icon 
+              onClick={() => props.openModal('SETTINGS_MODAL')}
+              icon='profile'/>
+          </ButtonContainer>
+      </AffirmationModule>
     </Container>
   )
 }

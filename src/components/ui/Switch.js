@@ -64,8 +64,6 @@ input:checked + .slider:before {
 }
 `
 
-const SliderRound = styled.span``
-
 const Switch = (props) => (
   <SwitchContainer className="switch">
     <input type="checkbox" />

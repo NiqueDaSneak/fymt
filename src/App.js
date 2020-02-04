@@ -1,8 +1,6 @@
 import React, {useReducer} from 'react';
-import styled, {createGlobalStyle} from 'styled-components'
-import FooterNav from './components/ui/FooterNav'
+import {createGlobalStyle} from 'styled-components'
 import Modal from './components/Modals/Modal';
-import Images from './assets/imgs';
 import BackgroundImageController from './components/hoc/BackgroundImageController'
 import Header from './components/ui/Header'
 import Carosel from './components/ui/Carosel';
@@ -19,10 +17,6 @@ const GlobalStyle = createGlobalStyle`
     -moz-osx-font-smoothing: grayscale;
   }
 `
-
-
-
-
 
 const App = () => {
   const initialState = {
