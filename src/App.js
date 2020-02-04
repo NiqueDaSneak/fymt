@@ -53,7 +53,7 @@ const App = () => {
           modalData={state.modalData} />
       <BackgroundImageController>
       <Header />
-      <Carosel />
+      <Carosel openModal={(modalType) => dispatch({type: 'openModal', modalType: modalType})} />
       </BackgroundImageController>
     </>
   );

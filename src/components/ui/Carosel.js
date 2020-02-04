@@ -4,13 +4,12 @@ import Images from '../../assets/imgs'
 import FooterNav from './FooterNav'
 
 const Container = styled.div`
-  /* width: 100%;
-  height: 40%; */
-  /* background-color: ${props => props.color}; */
   display: flex;
   flex-direction: column;
-  align-items: center;
-  height: auto;
+  background-color: #ffffff6b;
+  backdrop-filter: blur(18px);
+  /* align-items: center;
+  height: auto; */
 `
 
 const Module = styled.div`
@@ -42,9 +41,9 @@ const ModalNav = styled.div`
   display: flex;
   width: 100vw;
   justify-content: space-evenly;
-  background-color: white;
+  /* background-color: white; */
   padding-top: 4%;
-  height: 2vh;
+  height: 4vh;
   padding-bottom: 2%;
 `
 
@@ -52,18 +51,21 @@ const Chevron = styled.img.attrs({
   src: Images.chevron
 })`
   width: 10vw;
-  transform: ${props => props.left ? 'rotateY(180deg)' : null};
+  /* ${props => props.left ? 'transform: rotateY(-180deg)' : 'transform: rotateY(0)'} */
+  transform: ${props => props.left ? 'rotate(180deg)' : null};
 `
 
 const CategoryTitle = styled.p``
 
 const AffirmationModule = styled.div`
-  height: 40vh;
-  justify-content: space-around;
-    background-color: white;
+  /* background-color: #ffffff6b;
+  backdrop-filter: blur(18px); */
+  height: 36vh;
+  justify-content: space-evenly;
+  /* background-color: white; */
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: center; 
   /* padding-top: 4%; */
 `
 
@@ -94,19 +96,20 @@ const AffirmationText = styled.p`
   width: 90%;
   font-weight: 600;
   font-style: italic;
-  margin-top: 4%;
+  /* margin-top: 4%; */
   font-size: 16pt;
+    height: 10vh;
 `
 
 const InfoIcon = styled.img.attrs(props => ({
   src: Images.question
 }))`
   width: 10%;
-  margin-top: 10%;
+  /* margin-top: 10%; */
 `
 
 const Icon = styled.img.attrs(props => ({
-  src: iconSelector(props)
+  src: Images[props.icon]
 }))`
   width: 10vw;
   /* margin-bottom: 20%; */
@@ -125,11 +128,11 @@ const iconSelector = (props) => {
 }
 
 const ButtonContainer = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  /* margin-top: 10%; */
-/* width: 40%; */
-`
+    display: flex;
+    justify-content: space-evenly;
+  width: 100%;
+  height: 5vh;
+  `
 
 const Carosel = props => {
   const [index, setIndex] = useState(0)
@@ -180,14 +183,28 @@ const increment = () => {
           <AffirmationModule>
             <CategoryTitle>Fitness</CategoryTitle>
             <AffirmationText>This is the affirmation statement; more text for the longest possbile version.</AffirmationText>
-            <InfoIcon onClick={() => dispatch({type: 'openModal', modalType: 'INFO_MODAL'})}/>
+            {/* <InfoIcon onClick={() => dispatch({type: 'openModal', modalType: 'INFO_MODAL'})}/> */}
               <ButtonContainer>
-                <Icon settings/>
-                <Icon search/>
-                <Icon alert/>
-                <Icon settings/>
-                <Icon search/>
-                <Icon alert/>
+                <Icon 
+                onClick={() => props.openModal('INFO_MODAL')}
+                icon='info'/>
+                <Icon 
+                onClick={() => props.openModal('SETTINGS_MODAL')}
+                icon='change'/>
+                <Icon 
+                onClick={() => props.openModal('SEARCH_MODAL')}
+                icon='search'/>
+              </ButtonContainer>
+              <ButtonContainer>
+                <Icon 
+                onClick={() => props.openModal('ALERTS_MODAL')}
+                icon='alert'/>
+                <Icon 
+                onClick={() => props.openModal('SETTINGS_MODAL')}
+                icon='settings'/>
+                <Icon 
+                onClick={() => props.openModal('SETTINGS_MODAL')}
+                icon='profile'/>
               </ButtonContainer>
             {/* <IconContainer onClick={() => props.openModal('SETTINGS_MODAL')}><Icon settings/></IconContainer>
             <IconContainer onClick={() => props.openModal('SEARCH_MODAL')}><Icon search/></IconContainer>

@@ -9,6 +9,8 @@ import london from './london.png'
 import newyork from './newyork.png'
 import shanghai from './shanghai.png'
 import chevron from './chevron.svg'
+import change from './change.svg'
+import profile from './profile.svg'
 
 const Images = {
   alert: bell,
@@ -17,13 +19,15 @@ const Images = {
   forest: trees,
   rain: umbrella,
   ocean: wheel,
-  question: question,
+  info: question,
   background: {
     london: london,
     newyork: newyork,
     shanghai: shanghai,
   },
-  chevron: chevron
+  chevron: chevron,
+  change: change,
+  profile: profile
 }
 
 export default Images
