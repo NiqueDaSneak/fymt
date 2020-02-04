@@ -8,6 +8,7 @@ import question from './question.svg'
 import london from './london.png'
 import newyork from './newyork.png'
 import shanghai from './shanghai.png'
+import chevron from './chevron.svg'
 
 const Images = {
   alert: bell,
@@ -21,7 +22,8 @@ const Images = {
     london: london,
     newyork: newyork,
     shanghai: shanghai,
-  }
+  },
+  chevron: chevron
 }
 
 export default Images

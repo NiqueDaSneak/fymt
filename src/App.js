@@ -20,30 +20,9 @@ const GlobalStyle = createGlobalStyle`
   }
 `
 
-const BlurredCard = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  background-color: #ffffff6b;
-  backdrop-filter: blur(8px);
-  height: 30%;
-  justify-content: space-evenly;
-  box-shadow: 0px 1px 4px 0px rgba(0,0,0,0.75);
-`
 
-const AffirmationText = styled.p`
-  text-align: center;
-  font-size: 16pt;
-  font-weight: 600;
-  font-style: italic;
-  width: 84%;
-`
 
-const InfoIcon = styled.img.attrs(props => ({
-  src: Images.question
-}))`
-  width: 10%;
-`
+
 
 const App = () => {
   const initialState = {
@@ -75,11 +54,6 @@ const App = () => {
       <BackgroundImageController>
       <Header />
       <Carosel />
-        {/* <BlurredCard>
-          <AffirmationText>This is the affirmation statement; more text for the longest possbile version.</AffirmationText>
-          <InfoIcon onClick={() => dispatch({type: 'openModal', modalType: 'INFO_MODAL'})}/>
-        </BlurredCard>
-        <FooterNav openModal={(type) => dispatch({type: 'openModal', modalType: type})} /> */}
       </BackgroundImageController>
     </>
   );
