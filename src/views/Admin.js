@@ -18,30 +18,39 @@ const Select = styled.select`
   background-color: white;
 `
 
-const Admin = props => {
-  const [affirmation, setAffirmationText] = useState('')
+const Admin = ({getAffirmationCategories, affirmationCategories, submitAffirmation}) => {
+  const [newAffirmation, setNewAffirmationText] = useState('')
   const [category, setCategoryText] = useState('')
+  // const [categoryOptions, setCategoryOptions] = useState([])
+  // console.log('affirmationCategories', affirmationCategories)
+  useEffect(() => {
+    getAffirmationCategories()
+  }, [])
 
-  // useEffect(() => {
-  // })
-  console.log('category: ', category)
+  const formSubmit = () => {
+    submitAffirmation({text: newAffirmation, category: category})
+    getAffirmationCategories()
+    setNewAffirmationText('')
+    setCategoryText('')
+  }
+
   return(
     <Container>
       <p>Admin</p>
       <div>
         <p>Affirmations</p>
         <p>Input Text:</p>
-        <textarea onChange={(e) => setAffirmationText(e.target.value)}></textarea>
+        <textarea value={newAffirmation} onChange={(e) => setNewAffirmationText(e.target.value)}></textarea>
         <p>Tags</p>
         <div></div>
         <Select onChange={(e) => setCategoryText(e.target.value)}>
           <option>-Make Selection-</option>
-          <option>Peace</option>
-          <option>Fear</option>
-          <option>Joy</option>
+          {affirmationCategories.map(option => {
+            return <option>{option}</option>
+          })}
         </Select>        
-        <input type='text' onChange={(e) => setCategoryText(e.target.value)}/>
-        <SubmitButton onClick={() => props.submitAffirmation({text: affirmation, category: category})}>Submit</SubmitButton>
+        <input value={category} type='text' onChange={(e) => setCategoryText(e.target.value)}/>
+        <SubmitButton onClick={() => formSubmit()}>Submit</SubmitButton>
       </div>
     </Container>
   )
