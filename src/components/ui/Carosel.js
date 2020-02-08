@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
 import Images from '../../assets/imgs'
+import AffirmationModule from './AffirmationModule'
 
 const Container = styled.div`
   display: flex;
@@ -39,40 +40,6 @@ const Chevron = styled.img.attrs({
   transform: ${props => props.left ? 'rotate(180deg)' : null};
 `
 
-const CategoryTitle = styled.p`
-  font-size: 12pt;
-`
-
-const AffirmationModule = styled.div`
-  height: 36vh;
-  justify-content: space-evenly;
-  display: flex;
-  flex-direction: column;
-  align-items: center; 
-`
-
-const AffirmationText = styled.p`
-  text-align: center;
-  width: 90%;
-  font-weight: 600;
-  font-style: italic;
-  font-size: 16pt;
-  height: 10vh;
-`
-
-const Icon = styled.img.attrs(props => ({
-  src: Images[props.icon]
-}))`
-  width: 10vw;
-`
-
-const ButtonContainer = styled.div`
-  display: flex;
-  justify-content: space-evenly;
-  width: 100%;
-  height: 5vh;
-`
-
 const Carosel = props => {
   const [index, setIndex] = useState(0)
 
@@ -87,7 +54,8 @@ const Carosel = props => {
         </Dots>
         <Chevron />
       </ModalNav>
-      <AffirmationModule>
+      <AffirmationModule openModal={(val) => props.openModal(val)} />
+      {/* <AffirmationModule>
         <CategoryTitle>Fitness</CategoryTitle>
         <AffirmationText>This is the affirmation statement; more text for the longest possbile version.</AffirmationText>
           <ButtonContainer>
@@ -112,7 +80,7 @@ const Carosel = props => {
               onClick={() => props.openModal('SETTINGS_MODAL')}
               icon='profile'/>
           </ButtonContainer>
-      </AffirmationModule>
+      </AffirmationModule> */}
     </Container>
   )
 }
