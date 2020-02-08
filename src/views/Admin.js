@@ -21,29 +21,18 @@ const Select = styled.select`
   background-color: white;
 `
 
-
-
-
-// const Admin = ({getAffirmationCategories, affirmationCategories, submitAffirmation}) => {
-const Admin = (props) => {
+const Admin = () => {
   const initialState = {
     newAffirmationIsLoading: false,
     affirmationCategories: [],
     isAffirmationCategoryLoading: false
   }
-  // const [state, dispatch] = useReducer(reducer, initialState)
   
   const [state, dispatch] = useThunkReducer(adminReducer, initialState)
 
   const [newAffirmation, setNewAffirmationText] = useState('')
   const [category, setCategoryText] = useState('')
-  // const [categoryOptions, setCategoryOptions] = useState([])
-  // console.log('affirmationCategories', affirmationCategories)
   useEffect(() => {
-    // while (state.newAffirmationIsLoading) {
-      
-    // }
-    // console.log('in useEffect')
     dispatch(getAffirmationCategories())
   }, [dispatch])
 
@@ -51,12 +40,10 @@ const Admin = (props) => {
     dispatch(submitNewAffirmation({text: newAffirmation, category: category}))
     setNewAffirmationText('')
     setCategoryText('')
-    // getAffirmationCategories()
   }
 
   return(
     <Container>
-    {console.log(state)}
       <p>Admin</p>
       <div>
         <p>Affirmations</p>

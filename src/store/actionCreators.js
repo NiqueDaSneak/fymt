@@ -1,32 +1,18 @@
 import {affirmationRef, affirmationCategoryRef, categoryArray} from '../firebase'
 
-// case 'getAffirmationCategories':
-        // console.log('fired')
-        // let affirmationCategories = []
-        //   affirmationCategoryRef.once('value', function(snapshot) {
-        //     for (const category in snapshot.val()) {
-        //       affirmationCategories.push(snapshot.val()[category].categoryName)
-        //     }
-        //   })        
-        //   console.log('affirmationCategories', affirmationCategories)
-        // return {...state, affirmationCategories}
-
 export const getAffirmationCategories = () => {
-    // dispatch({type: 'test'})
-    // console.log('in action creator')
-    return (dispatch, getState) => {
-      dispatch(setAffirmationCategoriesStart())
-      let affirmationCategories = []
-      affirmationCategoryRef.once('value', snapshot => {
-        for (const category in snapshot.val()) {
-            affirmationCategories.push(snapshot.val()[category].categoryName)
-        }
-        console.log('affirmation categories in action', affirmationCategories)
-        dispatch(setAffirmationCategoriesEnd())
-        dispatch(setAffirmationCategories(affirmationCategories))
-      }) 
-    } 
-  }
+  return (dispatch, getState) => {
+    dispatch(setAffirmationCategoriesStart())
+    let affirmationCategories = []
+    affirmationCategoryRef.once('value', snapshot => {
+      for (const category in snapshot.val()) {
+          affirmationCategories.push(snapshot.val()[category].categoryName)
+      }
+      dispatch(setAffirmationCategoriesEnd())
+      dispatch(setAffirmationCategories(affirmationCategories))
+    }) 
+  } 
+}
 
 const setAffirmationCategoriesStart = () => {
   return {
@@ -43,7 +29,6 @@ const setAffirmationCategoriesEnd = () => {
 }
 
 const setAffirmationCategories = categories => {
-    console.log('categories', categories)
     return {
       type: 'setAffirmationCategories',
       affirmationCategories: categories
@@ -64,7 +49,6 @@ export const submitNewAffirmation = payload => {
             throw new Error();
             } else {
             // Data saved successfully!
-            console.log('finished')
             dispatch(submitNewAffirmationEnd())
             dispatch(getAffirmationCategories())
             }
@@ -82,11 +66,9 @@ export const submitNewAffirmation = payload => {
             .then( err => {
               if (err) {
                 // The write failed...
-                console.log(err)
                 throw new Error();
                 } else {
                 // Data saved successfully!
-                console.log('finished')
                 dispatch(submitNewAffirmationEnd())
                 dispatch(getAffirmationCategories())
                 }
@@ -97,12 +79,14 @@ export const submitNewAffirmation = payload => {
     })
   }
 }
+
 const submitNewAffirmationStart = () => {
   return{
     type: 'submitNewAffirmationStart',
     isLoading: true
   }
 }
+
 const submitNewAffirmationEnd = () => {
   return{
     type: 'submitNewAffirmationEnd',

@@ -5,7 +5,6 @@ import MainApp from './views/MainApp'
 import Admin from './views/Admin'
 
 import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom'
-import {affirmationRef, affirmationCategoryRef, categoryArray} from './firebase'
 
 // import * as serviceWorker from '../serviceWorker'
 
@@ -21,92 +20,14 @@ const GlobalStyle = createGlobalStyle`
     -moz-osx-font-smoothing: grayscale;
   }
 `
-const getAffirmationCategories = () => {
-  return (dispatch, getState) => {
-  //   const { count } = getState();
- 
-  //   if (count % 2 !== 0) {
-      dispatch(increment());
-  //   }
-  };
-}
 
-// const reducer = (state, action) => {
-//   switch (action.type) {
-//     case 'submitAffirmation':
-//       affirmationCategoryRef.orderByChild("categoryName").equalTo(action.affirmationCategory).once("value",snapshot => {
-//         if (snapshot.exists()){
-//           affirmationRef.push().update({affirmation: action.affirmationText, category: action.affirmationCategory})
-//           .then( err => {
-//             if (err) {
-//               // The write failed...
-//               console.log(err)
-//               throw new Error();
-//               } else {
-//               // Data saved successfully!
-//               console.log('finished')
-//               }
-
-//           })
-//         } else {
-//           affirmationCategoryRef.push().update({categoryName: action.affirmationCategory})
-//           .then( err => {
-//             if (err) {
-//               // throw err
-//             } else {
-//               // data was saved
-//               affirmationRef.push().update({affirmation: action.affirmationText, category: action.affirmationCategory})
-//               .then( err => {
-//                 if (err) {
-//                   // The write failed...
-//                   console.log(err)
-//                   throw new Error();
-//                   } else {
-//                   // Data saved successfully!
-//                   console.log('finished')
-//                   }
-//               })
-//             }
-          
-//           })
-//         }
-//       })
-//       return {...state}
-//     case 'getAffirmationCategories':
-//       console.log('fired')
-//       let affirmationCategories = []
-//         affirmationCategoryRef.once('value', function(snapshot) {
-//           for (const category in snapshot.val()) {
-//             affirmationCategories.push(snapshot.val()[category].categoryName)
-//           }
-//         })        
-//         console.log('affirmationCategories', affirmationCategories)
-//       return {...state, affirmationCategories}
-//     default:
-//       throw new Error();
-//       }
-// }
-
-const AppRouter = () => {
-  // const initialState = {
-  //   affirmationIsLoading: false,
-  //   affirmationCategories: []
-  // }
-  // const [state, dispatch] = useReducer(reducer, initialState)
-  
-  // const [state, dispatch] = useThunkReducer(reducer, initialState)
-  
+const AppRouter = () => {  
   return(
     <Router>
       <GlobalStyle/>
       <Switch>
         <Route exact path='/' component={MainApp} />
-        <Route path='/admin'>
-          <Admin/>
-          {/* // getAffirmationCategories={() => dispatch({type: 'getAffirmationCategories'})}
-          getAffirmationCategories={() => }
-          affirmationCategories={state.affirmationCategories} 
-          submitAffirmation={(val) => dispatch({type: 'submitAffirmation', affirmationText: val.text, affirmationCategory: val.category})} /> */}
+        <Route path='/admin' component={Admin}>
         </Route>
       </Switch>
     </Router>
