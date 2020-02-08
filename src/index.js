@@ -3,8 +3,8 @@ import ReactDOM from 'react-dom'
 import styled, {createGlobalStyle} from 'styled-components'
 import MainApp from './views/MainApp'
 import Admin from './views/Admin'
+
 import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom'
-import {affirmationRef, affirmationCategoryRef} from './firebase'
 
 // import * as serviceWorker from '../serviceWorker'
 
@@ -21,67 +21,13 @@ const GlobalStyle = createGlobalStyle`
   }
 `
 
-const reducer = (state, action) => {
-  switch (action.type) {
-    case 'submitAffirmation':
-        affirmationCategoryRef.orderByChild("name").equalTo(action.affirmationCategory).once("value",snapshot => {
-          if (snapshot.exists()){
-            affirmationRef.push().update({affirmation: action.affirmationText, category: action.affirmationCategory})
-            .then( err => {
-              if (err) {
-                // The write failed...
-                console.log(err)
-                throw new Error();
-                } else {
-                // Data saved successfully!
-                console.log('finished')
-                }
-  
-            })
-          } else {
-            affirmationCategoryRef.push().update({categoryName: action.affirmationCategory})
-            .then( err => {
-              if (err) {
-                // throw err
-              } else {
-                // data was saved
-                affirmationRef.push().update({affirmation: action.affirmationText, category: action.affirmationCategory})
-                .then( err => {
-                  if (err) {
-                    // The write failed...
-                    console.log(err)
-                    throw new Error();
-                    } else {
-                    // Data saved successfully!
-                    console.log('finished')
-                    }
-                })
-              }
-            
-            })
-          }
-      });
-        break
-    default:
-      throw new Error();
-      }
-}
-
-const AppRouter = () => {
-
-  const initialState = {
-    affirmationIsLoading: false
-  }
-      
-  const [state, dispatch] = useReducer(reducer, initialState)
-  
+const AppRouter = () => {  
   return(
     <Router>
       <GlobalStyle/>
       <Switch>
         <Route exact path='/' component={MainApp} />
-        <Route path='/admin'>
-          <Admin submitAffirmation={(val) => dispatch({type: 'submitAffirmation', affirmationText: val.text, affirmationCategory: val.category})} />
+        <Route path='/admin' component={Admin}>
         </Route>
       </Switch>
     </Router>

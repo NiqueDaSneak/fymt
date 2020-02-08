@@ -14,4 +14,6 @@ const config = {
 firebase.initializeApp(config)
 const databaseRef = firebase.database().ref()
 export const affirmationRef = databaseRef.child("affirmation")
+
 export const affirmationCategoryRef = databaseRef.child("affirmationCategory")
+
