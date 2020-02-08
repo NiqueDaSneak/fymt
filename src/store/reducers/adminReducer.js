@@ -3,43 +3,7 @@ import {affirmationRef, affirmationCategoryRef, categoryArray} from '../../fireb
 const reducer = (state, action) => {
     switch (action.type) {
       case 'submitAffirmation':
-        affirmationCategoryRef.orderByChild("categoryName").equalTo(action.affirmationCategory).once("value",snapshot => {
-          if (snapshot.exists()){
-            affirmationRef.push().update({affirmation: action.affirmationText, category: action.affirmationCategory})
-            .then( err => {
-              if (err) {
-                // The write failed...
-                console.log(err)
-                throw new Error();
-                } else {
-                // Data saved successfully!
-                console.log('finished')
-                }
-  
-            })
-          } else {
-            affirmationCategoryRef.push().update({categoryName: action.affirmationCategory})
-            .then( err => {
-              if (err) {
-                // throw err
-              } else {
-                // data was saved
-                affirmationRef.push().update({affirmation: action.affirmationText, category: action.affirmationCategory})
-                .then( err => {
-                  if (err) {
-                    // The write failed...
-                    console.log(err)
-                    throw new Error();
-                    } else {
-                    // Data saved successfully!
-                    console.log('finished')
-                    }
-                })
-              }
-            
-            })
-          }
-        })
+        
         return {...state}
       case 'setAffirmationCategoriesStart':
         return {...state, isAffirmationCategoryLoading: true}
@@ -47,6 +11,10 @@ const reducer = (state, action) => {
         return {...state, isAffirmationCategoryLoading: false}
       case 'setAffirmationCategories':
         return {...state, affirmationCategories: action.affirmationCategories}
+case 'submitNewAffirmationStart':
+  return {...state, newAffirmationIsLoading: action.isLoading}
+case 'submitNewAffirmationEnd':
+  return {...state, newAffirmationIsLoading: action.isLoading}
     //   case 'getAffirmationCategories':
     //     console.log('fired')
     //     let affirmationCategories = []

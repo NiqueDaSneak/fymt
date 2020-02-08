@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
-import {getAffirmationCategories} from '../store/actionCreators'
+import {getAffirmationCategories, submitNewAffirmation} from '../store/actionCreators'
 import { useThunkReducer } from 'react-hook-thunk-reducer';
 import adminReducer from '../store/reducers/adminReducer'
 
@@ -27,7 +27,7 @@ const Select = styled.select`
 // const Admin = ({getAffirmationCategories, affirmationCategories, submitAffirmation}) => {
 const Admin = (props) => {
   const initialState = {
-    affirmationIsLoading: false,
+    newAffirmationIsLoading: false,
     affirmationCategories: [],
     isAffirmationCategoryLoading: false
   }
@@ -40,15 +40,18 @@ const Admin = (props) => {
   // const [categoryOptions, setCategoryOptions] = useState([])
   // console.log('affirmationCategories', affirmationCategories)
   useEffect(() => {
-    console.log('in useEffect')
+    // while (state.newAffirmationIsLoading) {
+      
+    // }
+    // console.log('in useEffect')
     dispatch(getAffirmationCategories())
   }, [dispatch])
 
   const formSubmit = () => {
-    // submitAffirmation({text: newAffirmation, category: category})
+    dispatch(submitNewAffirmation({text: newAffirmation, category: category}))
+    setNewAffirmationText('')
+    setCategoryText('')
     // getAffirmationCategories()
-    // setNewAffirmationText('')
-    // setCategoryText('')
   }
 
   return(
