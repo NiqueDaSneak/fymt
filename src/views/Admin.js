@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
 // import {getAffirmationCategories, submitNewAffirmation} from '../store/actionCreators'
 import actions from '../store/'
-import { useThunkReducer } from 'react-hook-thunk-reducer';
+import { useThunkReducer } from 'react-hook-thunk-reducer'
 import adminReducer from '../store/reducers/adminReducer'
 
 const Container = styled.div`
@@ -33,6 +33,7 @@ const Admin = () => {
 
   const [newAffirmation, setNewAffirmationText] = useState('')
   const [category, setCategoryText] = useState('')
+
   useEffect(() => {
     dispatch(actions.admin.getAffirmationCategories())
   }, [dispatch])
