@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
-import {getAffirmationCategories, submitNewAffirmation} from '../store/actionCreators'
-import { useThunkReducer } from 'react-hook-thunk-reducer';
+// import {getAffirmationCategories, submitNewAffirmation} from '../store/actionCreators'
+import actions from '../store/'
+import { useThunkReducer } from 'react-hook-thunk-reducer'
 import adminReducer from '../store/reducers/adminReducer'
 
 const Container = styled.div`
@@ -32,12 +33,13 @@ const Admin = () => {
 
   const [newAffirmation, setNewAffirmationText] = useState('')
   const [category, setCategoryText] = useState('')
+
   useEffect(() => {
-    dispatch(getAffirmationCategories())
+    dispatch(actions.admin.getAffirmationCategories())
   }, [dispatch])
 
   const formSubmit = () => {
-    dispatch(submitNewAffirmation({text: newAffirmation, category: category}))
+    dispatch(actions.admin.submitNewAffirmation({text: newAffirmation, category: category}))
     setNewAffirmationText('')
     setCategoryText('')
   }

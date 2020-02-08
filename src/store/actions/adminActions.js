@@ -1,4 +1,4 @@
-import {affirmationRef, affirmationCategoryRef, categoryArray} from '../firebase'
+import {affirmationRef, affirmationCategoryRef, categoryArray} from '../../firebase'
 
 export const getAffirmationCategories = () => {
   return (dispatch, getState) => {

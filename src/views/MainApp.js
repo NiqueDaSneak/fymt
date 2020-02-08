@@ -1,5 +1,7 @@
-import React, {useReducer} from 'react';
-// import {createGlobalStyle} from 'styled-components'
+import React from 'react';
+import { useThunkReducer } from 'react-hook-thunk-reducer'
+import modalReducer from '../store/reducers/modalReducer'
+import actions from '../store/'
 import Modal from '../components/Modals/Modal';
 import BackgroundImageController from '../components/hoc/BackgroundImageController'
 import Header from '../components/ui/Header'
@@ -11,30 +13,17 @@ const MainApp = () => {
     modalType: null,
   }
 
-  function reducer(state, action) {
-    // var database = firebase.database();
-    switch (action.type) {
-      case 'openModal':
-        return {modalOpen: true, modalType: action.modalType, modalData: action.modalData}
-      case 'closeModal':
-        return {modalOpen: false, modalData: action.modalData}
-      default:
-        throw new Error();
-    }
-  }
-
-  const [state, dispatch] = useReducer(reducer, initialState);
+  const [state, dispatch] = useThunkReducer(modalReducer, initialState);
 
   return (
     <>
       <Modal
-          close={() => dispatch({type: 'closeModal'})}
-          open={state.modalOpen} 
-          modalType={state.modalType}
-          modalData={state.modalData} />
+        close={() => dispatch(actions.modal.close())}
+        open={state.modalOpen} 
+        modalType={state.modalType} />
       <BackgroundImageController>
       <Header />
-      <Carosel openModal={(modalType) => dispatch({type: 'openModal', modalType: modalType})} />
+      <Carosel openModal={(modalType) => dispatch(actions.modal.open(modalType))} />
       </BackgroundImageController>
     </>
   );
