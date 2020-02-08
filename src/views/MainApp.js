@@ -1,6 +1,6 @@
 import React from 'react';
 import { useThunkReducer } from 'react-hook-thunk-reducer'
-import affirmationModuleActions from '../store/reducers/modalReducer'
+import modalReducer from '../store/reducers/modalReducer'
 import actions from '../store/'
 import Modal from '../components/Modals/Modal';
 import BackgroundImageController from '../components/hoc/BackgroundImageController'
@@ -13,7 +13,7 @@ const MainApp = () => {
     modalType: null,
   }
 
-  const [state, dispatch] = useThunkReducer(affirmationModuleActions, initialState);
+  const [state, dispatch] = useThunkReducer(modalReducer, initialState);
 
   return (
     <>

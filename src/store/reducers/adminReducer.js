@@ -3,7 +3,6 @@ import {affirmationRef, affirmationCategoryRef, categoryArray} from '../../fireb
 const reducer = (state, action) => {
   switch (action.type) {
     case 'submitAffirmation':
-      
       return {...state}
     case 'setAffirmationCategoriesStart':
       return {...state, isAffirmationCategoryLoading: true}

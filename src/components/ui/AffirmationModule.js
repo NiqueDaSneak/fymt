@@ -1,10 +1,13 @@
 import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
 import Images from '../../assets/imgs'
-import {affirmationRef, affirmationCategoryRef, categoryArray} from '../../firebase'
+import { useThunkReducer } from 'react-hook-thunk-reducer'
+import actions from '../../store/'
+import affirmationReducer from '../../store/reducers/affirmationReducer'
 
 const CategoryTitle = styled.p`
   font-size: 12pt;
+  transition: all 4s ease-in-out;
 `
 
 const Container = styled.div`
@@ -38,29 +41,25 @@ const ButtonContainer = styled.div`
 `
 
 const AffirmationModule = (props) => {
-  const [currentAffirmation, setCurrentAffirmation] = useState()
-  const [allAffirmations, setAllAffirmations] = useState([])
+  const initialState = {
+    currentAffirmation: {
+      category: '',
+      text: ''
+    },
+    allAffirmations: [],
+    isAffirmationLoading: false
+  }
   
+  const [state, dispatch] = useThunkReducer(affirmationReducer, initialState);
+
   useEffect(() => {
-    let affirmations = [...allAffirmations]
-    affirmationRef.once('value', (snapshot) => {
-      for (const affirmation in snapshot.val()) {
-        // console.log(affirmations)
-        affirmations.push(snapshot.val()[affirmation])
-        // console.log(snapshot.val()[affirmation])
-        // setAllAffirmations(affirmations)
-        // affirmationCategories.push(snapshot.val()[category].categoryName)
-      }
-    })
-    console.log(affirmations)
-    // setAllAffirmations(affirmations)
-    // setCurrentAffirmation(allAffirmations[0].affirmation !== undefined ? allAffirmations[0].affirmation : '')   
-  }, [])
+    dispatch(actions.affirmations.loadAffirmations({random: true}))
+  }, [dispatch])
 
   return(
     <Container>
-    <CategoryTitle>Fitness</CategoryTitle>
-    <AffirmationText>{currentAffirmation}</AffirmationText>
+    <CategoryTitle>{state.currentAffirmation.category}</CategoryTitle>
+    <AffirmationText>{state.currentAffirmation.text}</AffirmationText>
       <ButtonContainer>
         <Icon 
           onClick={() => props.openModal('INFO_MODAL')}
