@@ -54,7 +54,7 @@ const Carosel = props => {
         </Dots>
         <Chevron />
       </ModalNav>
-      <AffirmationModule openModal={(val) => props.openModal(val)} />
+      <AffirmationModule openModal={(modalType, modalData) => props.openModal(modalType, modalData)} />
       {/* <AffirmationModule>
         <CategoryTitle>Fitness</CategoryTitle>
         <AffirmationText>This is the affirmation statement; more text for the longest possbile version.</AffirmationText>

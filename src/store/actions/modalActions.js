@@ -1,7 +1,8 @@
-export const openModal = modalType => {
+export const openModal = (modalType, modalData) => {
   return {
     type: 'OPEN_MODAL', 
-    modalType: modalType
+    modalType: modalType,
+    modalData: modalData
   }
 }
 

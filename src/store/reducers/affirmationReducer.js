@@ -1,3 +1,4 @@
+import actions from ".."
 
 const reducer = (state, action) => {
   switch (action.type) {
@@ -7,7 +8,15 @@ const reducer = (state, action) => {
       return {...state, isAffirmationLoading: false}
     case 'SET_AFF': 
       return {...state, currentAffirmation: {category: action.category, text: action.text}}
-    default:
+    case 'SET_ALL_AFFS':
+      return {...state, allAffirmations: action.affirmations}
+    case 'SET_AFF_CAT_START':
+      return{...state, isCategoryLoading: action.isCategoryLoading}
+    case 'SET_AFF_CAT_END':
+      return{...state, isCategoryLoading: action.isCategoryLoading}
+    case 'SET_AFF_CAT':
+      return{...state, allCategories: action.affirmationCategories}
+      default:
       throw new Error();
   }
 }

@@ -11,6 +11,7 @@ const MainApp = () => {
   const initialState = {
     modalOpen: false,
     modalType: null,
+    modalData: []
   }
 
   const [state, dispatch] = useThunkReducer(modalReducer, initialState);
@@ -20,10 +21,11 @@ const MainApp = () => {
       <Modal
         close={() => dispatch(actions.modal.close())}
         open={state.modalOpen} 
-        modalType={state.modalType} />
+        modalType={state.modalType}
+        modalData={state.modalData} />
       <BackgroundImageController>
       <Header />
-      <Carosel openModal={(modalType) => dispatch(actions.modal.open(modalType))} />
+      <Carosel openModal={(modalType, modalData) => dispatch(actions.modal.open(modalType, modalData))} />
       </BackgroundImageController>
     </>
   );

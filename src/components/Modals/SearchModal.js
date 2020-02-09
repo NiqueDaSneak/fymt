@@ -28,26 +28,9 @@ const Tag = styled.span`
 const SearchModal = props => {
   return(
     <Container active={props.active}>
-      <Tag>Motivation</Tag>
-      <Tag>Peace</Tag>
-      <Tag>Help Me</Tag>
-      <Tag>Courage</Tag>
-      <Tag>Help Me</Tag>
-      <Tag>Help Me</Tag>
-      <Tag>Help Me</Tag>
-      <Tag>Peace</Tag>
-      <Tag>Motivation</Tag>
-      <Tag>Courage</Tag>
-      <Tag>Motivation</Tag>
-      <Tag>Help Me</Tag>
-      <Tag>Courage</Tag>
-      <Tag>Courage</Tag>
-      <Tag>Help Me</Tag>
-      <Tag>Help Me</Tag>
-      <Tag>Courage</Tag>
-      <Tag>Peace</Tag>
-      <Tag>Help Me</Tag>
-      <Tag>Help Me</Tag>
+      {props.categories.map(category => {
+        return <Tag key={category}>{category}</Tag>
+      })}
     </Container>
   )
 }

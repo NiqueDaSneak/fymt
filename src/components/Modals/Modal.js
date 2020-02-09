@@ -27,7 +27,7 @@ const Modal = (props) => {
         visible={props.open} />
       <SettingsModal active={props.modalType === 'SETTINGS_MODAL'} />  
       <AlertsModal active={props.modalType === 'ALERTS_MODAL'} />  
-      <SearchModal active={props.modalType === 'SEARCH_MODAL'} />  
+      <SearchModal active={props.modalType === 'SEARCH_MODAL'} categories={props.modalData}/>  
       <InfoModal active={props.modalType === 'INFO_MODAL'} />  
     </Portal>
   )

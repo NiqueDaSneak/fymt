@@ -9,10 +9,19 @@ export const loadAffirmations = payload => {
         affirmations.push(snapshot.val()[affirmationData])
       }
       dispatch(loadAffirmationsEnd())
+      dispatch(storeAllAffirmations(affirmations))
+      dispatch(getCategories())
       if (payload.random === true) {
         dispatch(setRandomAffirmation(affirmations))
       }
     })
+  }
+}
+
+const storeAllAffirmations = affirmations => {
+  return {
+    type: 'SET_ALL_AFFS',
+    affirmations: affirmations
   }
 }
 
@@ -35,4 +44,39 @@ const loadAffirmationsEnd = () => {
   return {
     type: 'LOAD_AFF_END'
   }
+}
+
+export const getCategories = () => {
+  return (dispatch, getState) => {
+    let affirmationCategories = []
+    dispatch(setAffirmationCategoriesStart())
+    affirmationCategoryRef.once('value', snapshot => {
+      for (const category in snapshot.val()) {
+          affirmationCategories.push(snapshot.val()[category].categoryName)
+      }
+      dispatch(setAffirmationCategoriesEnd())
+      dispatch(setAffirmationCategories(affirmationCategories))
+    }) 
+  }
+}
+
+const setAffirmationCategoriesStart = () => {
+  return {
+    type: 'SET_AFF_CAT_START',
+    isCategoryLoading: true
+  }
+}
+
+const setAffirmationCategoriesEnd = () => {
+  return {
+    type: 'SET_AFF_CAT_END',
+    isCategoryLoading: false
+  }
+}
+
+const setAffirmationCategories = categories => {
+    return {
+      type: 'SET_AFF_CAT',
+      affirmationCategories: categories
+    }
 }

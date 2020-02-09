@@ -4,6 +4,7 @@ import Images from '../../assets/imgs'
 import { useThunkReducer } from 'react-hook-thunk-reducer'
 import actions from '../../store/'
 import affirmationReducer from '../../store/reducers/affirmationReducer'
+// import { getCategories } from '../../store/actions/affirmationActions'
 
 const CategoryTitle = styled.p`
   font-size: 12pt;
@@ -47,7 +48,9 @@ const AffirmationModule = (props) => {
       text: ''
     },
     allAffirmations: [],
-    isAffirmationLoading: false
+    allCategories: [],
+    isAffirmationLoading: false,
+    isCategoryLoading: false
   }
   
   const [state, dispatch] = useThunkReducer(affirmationReducer, initialState);
@@ -55,7 +58,7 @@ const AffirmationModule = (props) => {
   useEffect(() => {
     dispatch(actions.affirmations.loadAffirmations({random: true}))
   }, [dispatch])
-
+  
   return(
     <Container>
     <CategoryTitle>{state.currentAffirmation.category}</CategoryTitle>
@@ -68,7 +71,7 @@ const AffirmationModule = (props) => {
           onClick={() => props.openModal('SETTINGS_MODAL')}
           icon='change'/>
         <Icon 
-          onClick={() => props.openModal('SEARCH_MODAL')}
+          onClick={() => props.openModal('SEARCH_MODAL', state.allCategories)}
           icon='search'/>
       </ButtonContainer>
       <ButtonContainer>
