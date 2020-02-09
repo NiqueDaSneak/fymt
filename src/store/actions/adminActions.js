@@ -16,21 +16,21 @@ export const getAffirmationCategories = () => {
 
 const setAffirmationCategoriesStart = () => {
   return {
-    type: 'setAffirmationCategoriesStart',
+    type: 'SET_AFF_CAT_START',
     isAffirmationCategoryLoading: true
   }
 }
 
 const setAffirmationCategoriesEnd = () => {
   return {
-    type: 'setAffirmationCategoriesEnd',
+    type: 'SET_AFF_CAT_END',
     isAffirmationCategoryLoading: false
   }
 }
 
 const setAffirmationCategories = categories => {
     return {
-      type: 'setAffirmationCategories',
+      type: 'SET_AFF_CAT',
       affirmationCategories: categories
     }
 }
@@ -82,14 +82,14 @@ export const submitNewAffirmation = payload => {
 
 const submitNewAffirmationStart = () => {
   return{
-    type: 'submitNewAffirmationStart',
+    type: 'SUBMIT_NEW_AFF_START',
     isLoading: true
   }
 }
 
 const submitNewAffirmationEnd = () => {
   return{
-    type: 'submitNewAffirmationEnd',
+    type: 'SUBMIT_NEW_AFF_END',
     isLoading: false
   }
 }

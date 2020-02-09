@@ -19,7 +19,7 @@ export const loadAffirmations = payload => {
 const setRandomAffirmation = affirmations => {
   let randomNum = Math.floor((Math.random() * affirmations.length))
   return {
-    type: 'SET_AFFIRMATION',
+    type: 'SET_AFF',
     text: affirmations[randomNum].affirmation,
     category: affirmations[randomNum].category
   }
@@ -27,12 +27,12 @@ const setRandomAffirmation = affirmations => {
 
 const loadAffirmationsStart = () => {
   return {
-    type: 'LOAD_AFFIRMATIONS_START'
+    type: 'LOAD_AFF_START'
   }
 }
 
 const loadAffirmationsEnd = () => {
   return {
-    type: 'LOAD_AFFIRMATIONS_END'
+    type: 'LOAD_AFF_END'
   }
 }

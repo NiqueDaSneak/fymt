@@ -2,17 +2,15 @@ import {affirmationRef, affirmationCategoryRef, categoryArray} from '../../fireb
 
 const reducer = (state, action) => {
   switch (action.type) {
-    case 'submitAffirmation':
-      return {...state}
-    case 'setAffirmationCategoriesStart':
+    case 'SET_AFF_CAT_START':
       return {...state, isAffirmationCategoryLoading: true}
-    case 'setAffirmationCategoriesEnd':
+    case 'SET_AFF_CAT_END':
       return {...state, isAffirmationCategoryLoading: false}
-    case 'setAffirmationCategories':
+    case 'SET_AFF_CAT':
       return {...state, affirmationCategories: action.affirmationCategories}
-    case 'submitNewAffirmationStart':
+    case 'SUBMIT_NEW_AFF_START':
       return {...state, newAffirmationIsLoading: action.isLoading}
-    case 'submitNewAffirmationEnd':
+    case 'SUBMIT_NEW_AFF_END':
       return {...state, newAffirmationIsLoading: action.isLoading}
     default:
       throw new Error();
