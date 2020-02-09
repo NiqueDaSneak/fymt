@@ -1,7 +1,7 @@
 
 const reducer = (state, action) => {
   switch (action.type) {
-    case 'LOAD_AFFIRMATLOAD_AFF_STARTIONS_START':
+    case 'LOAD_AFF_START':
       return {...state, isAffirmationLoading: true}
     case 'LOAD_AFF_END':
       return {...state, isAffirmationLoading: false}
