@@ -68,7 +68,7 @@ const AffirmationModule = (props) => {
           onClick={() => props.openModal('INFO_MODAL')}
           icon='info'/>
         <Icon 
-          onClick={() => props.openModal('SETTINGS_MODAL')}
+          onClick={() => dispatch(actions.affirmations.changeSameCategory())}
           icon='change'/>
         <Icon 
           onClick={() => props.openModal('SEARCH_MODAL', state.allCategories)}

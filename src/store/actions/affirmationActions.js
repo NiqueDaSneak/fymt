@@ -80,3 +80,18 @@ const setAffirmationCategories = categories => {
       affirmationCategories: categories
     }
 }
+
+export const changeSameCategory = () => {
+  return (dispatch, getState) => {
+    let matches = getState().allAffirmations.filter( affirmation => affirmation.category === getState().currentAffirmation.category)
+    let randomNum = Math.floor((Math.random() * matches.length))
+    dispatch(setAffirmation({text: matches[randomNum].affirmation, category: matches[randomNum].category}))
+  }
+}
+
+const setAffirmation = payload => {
+  return {
+    type: 'CHANGE_AFF_SAME_CAT',
+    payload
+  }
+}

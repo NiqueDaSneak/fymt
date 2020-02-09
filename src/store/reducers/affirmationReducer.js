@@ -11,11 +11,13 @@ const reducer = (state, action) => {
     case 'SET_ALL_AFFS':
       return {...state, allAffirmations: action.affirmations}
     case 'SET_AFF_CAT_START':
-      return{...state, isCategoryLoading: action.isCategoryLoading}
+      return {...state, isCategoryLoading: action.isCategoryLoading}
     case 'SET_AFF_CAT_END':
-      return{...state, isCategoryLoading: action.isCategoryLoading}
+      return {...state, isCategoryLoading: action.isCategoryLoading}
     case 'SET_AFF_CAT':
-      return{...state, allCategories: action.affirmationCategories}
+      return {...state, allCategories: action.affirmationCategories}
+    case 'CHANGE_AFF_SAME_CAT':
+      return {...state, currentAffirmation: action.payload}
       default:
       throw new Error();
   }

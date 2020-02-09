@@ -26,11 +26,12 @@ const Tag = styled.span`
 `
 
 const SearchModal = props => {
+  const Tags = props.categories ? props.categories.map(category => {
+    return <Tag key={category}>{category}</Tag>
+  }) : []
   return(
     <Container active={props.active}>
-      {props.categories.map(category => {
-        return <Tag key={category}>{category}</Tag>
-      })}
+      {Tags}
     </Container>
   )
 }
