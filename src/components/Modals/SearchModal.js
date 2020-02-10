@@ -1,5 +1,10 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import styled from 'styled-components'
+import actions from '../../store'
+import { useThunkReducer } from 'react-hook-thunk-reducer'
+import affirmationReducer from '../../store/reducers/affirmationReducer'
+import initialState from '../../store/state/affirmationState'
+import {AffirmationProvider, AffirmationContext} from '../../store/state/AffirmationProvider'
 
 const Container = styled.div`
   display: flex;
@@ -26,9 +31,14 @@ const Tag = styled.span`
 `
 
 const SearchModal = props => {
+  const {state, dispatch} = useContext(AffirmationContext)
+  // const [state, dispatch] = useThunkReducer(affirmationReducer, initialState);
+
   const Tags = props.categories ? props.categories.map(category => {
-    return <Tag key={category}>{category}</Tag>
+    return <Tag onClick={(event) => dispatch(actions.affirmations.setNewCategory(event.target.innerHTML))} key={category}>{category}</Tag>
   }) : []
+  
+  console.log(state)
   return(
     <Container active={props.active}>
       {Tags}

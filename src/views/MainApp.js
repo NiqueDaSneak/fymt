@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {createContext} from 'react';
 import { useThunkReducer } from 'react-hook-thunk-reducer'
 import modalReducer from '../store/reducers/modalReducer'
 import actions from '../store/'
@@ -6,6 +6,8 @@ import Modal from '../components/Modals/Modal';
 import BackgroundImageController from '../components/hoc/BackgroundImageController'
 import Header from '../components/ui/Header'
 import Carosel from '../components/ui/Carosel';
+import {AffirmationContext} from '../store/state/AffirmationProvider'
+// const AffirmationContext = createContext()
 
 const MainApp = () => {
   const initialState = {
@@ -18,6 +20,7 @@ const MainApp = () => {
 
   return (
     <>
+    <AffirmationContext.Provider value={{state, dispatch}}>
       <Modal
         close={() => dispatch(actions.modal.close())}
         open={state.modalOpen} 
@@ -27,6 +30,7 @@ const MainApp = () => {
       <Header />
       <Carosel openModal={(modalType, modalData) => dispatch(actions.modal.open(modalType, modalData))} />
       </BackgroundImageController>
+    </AffirmationContext.Provider>
     </>
   );
 }
