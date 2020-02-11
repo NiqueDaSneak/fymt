@@ -2,7 +2,7 @@ import React, { useContext, useEffect } from 'react'
 import styled from 'styled-components'
 import Images from '../../assets/imgs'
 import actions from '../../store/'
-import {AffirmationContext} from '../hoc/Store'
+import {AffirmationContext, ModalContext} from '../hoc/Store'
 
 const CategoryTitle = styled.p`
   font-size: 12pt;
@@ -40,36 +40,37 @@ const ButtonContainer = styled.div`
 `
 
 const AffirmationModule = (props) => {
-  const [state, dispatch] = useContext(AffirmationContext)
+  const [affirmationState, affirmationDispatch] = useContext(AffirmationContext)
+  const [modalState, modalDispatch] = useContext(ModalContext)
 
   useEffect(() => {
-    dispatch(actions.affirmations.loadAffirmations({random: true}))
-  }, [dispatch])
+    affirmationDispatch(actions.affirmations.loadAffirmations({random: true}))
+  }, [affirmationDispatch])
   
   return(
     <Container>
-      <CategoryTitle>{state.currentAffirmation.category}</CategoryTitle>
-      <AffirmationText>{state.currentAffirmation.text}</AffirmationText>
+      <CategoryTitle>{affirmationState.currentAffirmation.category}</CategoryTitle>
+      <AffirmationText>{affirmationState.currentAffirmation.text}</AffirmationText>
         <ButtonContainer>
           <Icon 
-            onClick={() => props.openModal('INFO_MODAL')}
+            onClick={() => modalDispatch(actions.modal.open('INFO_MODAL'))}
             icon='info'/>
           <Icon 
-            onClick={() => dispatch(actions.affirmations.changeSameCategory())}
+            onClick={() => affirmationDispatch(actions.affirmations.changeSameCategory())}
             icon='change'/>
           <Icon 
-            onClick={() => props.openModal('SEARCH_MODAL', state.allCategories)}
+            onClick={() => modalDispatch(actions.modal.open('SEARCH_MODAL', affirmationState.allCategories))}
             icon='search'/>
         </ButtonContainer>
         <ButtonContainer>
           <Icon 
-            onClick={() => props.openModal('ALERTS_MODAL')}
+            onClick={() => modalDispatch(actions.modal.open('ALERTS_MODAL'))}
             icon='alert'/>
           <Icon 
-            onClick={() => props.openModal('SETTINGS_MODAL')}
+            onClick={() => modalDispatch(actions.modal.open('SETTINGS_MODAL'))}
             icon='settings'/>
           <Icon 
-            onClick={() => props.openModal('SETTINGS_MODAL')}
+            onClick={() => modalDispatch(actions.modal.open('SETTINGS_MODAL'))}
             icon='profile'/>
         </ButtonContainer>
       </Container>

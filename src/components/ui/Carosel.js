@@ -54,7 +54,7 @@ const Carosel = props => {
         </Dots>
         <Chevron />
       </ModalNav>
-      <AffirmationModule openModal={(modalType, modalData) => props.openModal(modalType, modalData)} />
+      <AffirmationModule />
     </Container>
   )
 }
