@@ -34,7 +34,6 @@ const SearchModal = props => {
     return <Tag onClick={(event) => dispatch(actions.affirmations.setNewCategory(event.target.innerHTML))} key={category}>{category}</Tag>
   }) : []
   
-  console.log(state)
   return(
     <Container active={props.active}>
       {Tags}
