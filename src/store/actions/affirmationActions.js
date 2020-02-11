@@ -98,13 +98,13 @@ const setAffirmation = payload => {
 
 export const setNewCategory = newCategoryName => {
   return (dispatch, getState) => {
-    console.log(getState.allAffirmations)
+    console.log(getState().allAffirmations)
     let matches = getState().allAffirmations.filter( affirmation => affirmation.category === newCategoryName.toString())
     let randomNum = Math.floor((Math.random() * matches.length))
     // dispatch(setNewCategory())
     console.log(newCategoryName)
     console.log(matches)
-    // dispatch(setAffirmation({text: matches[randomNum].affirmation, category: matches[randomNum].category}))
+    dispatch(setAffirmation({text: matches[randomNum].affirmation, category: matches[randomNum].category}))
   }
 }
 

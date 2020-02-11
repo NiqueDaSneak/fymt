@@ -6,7 +6,10 @@ const affirmationState = {
     allAffirmations: [],
     allCategories: [],
     isAffirmationLoading: false,
-    isCategoryLoading: false
-  }
+    isCategoryLoading: false,
+    modalOpen: false,
+    modalType: null,
+    modalData: []
+}
 
 export default affirmationState

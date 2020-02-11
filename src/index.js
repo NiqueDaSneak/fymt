@@ -5,6 +5,7 @@ import MainApp from './views/MainApp'
 import Admin from './views/Admin'
 
 import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom'
+import Store from './components/hoc/Store'
 
 // import * as serviceWorker from '../serviceWorker'
 
@@ -26,7 +27,11 @@ const AppRouter = () => {
     <Router>
       <GlobalStyle/>
       <Switch>
-        <Route exact path='/' component={MainApp} />
+        <Route exact path='/'>
+          <Store>
+            <MainApp/>
+          </Store>
+        </Route>
         <Route path='/admin' component={Admin}>
         </Route>
       </Switch>
