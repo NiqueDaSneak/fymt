@@ -18,8 +18,11 @@ const reducer = (state, action) => {
       return {...state, allCategories: action.affirmationCategories}
     case 'CHANGE_AFF_SAME_CAT':
       return {...state, currentAffirmation: action.payload}
-      default:
-      throw new Error();
+    case 'test':
+      console.log('test in reducer')
+      return {...state}
+    default:
+    throw new Error();
   }
 }
   

@@ -54,33 +54,7 @@ const Carosel = props => {
         </Dots>
         <Chevron />
       </ModalNav>
-      <AffirmationModule openModal={(modalType, modalData) => props.openModal(modalType, modalData)} />
-      {/* <AffirmationModule>
-        <CategoryTitle>Fitness</CategoryTitle>
-        <AffirmationText>This is the affirmation statement; more text for the longest possbile version.</AffirmationText>
-          <ButtonContainer>
-            <Icon 
-              onClick={() => props.openModal('INFO_MODAL')}
-              icon='info'/>
-            <Icon 
-              onClick={() => props.openModal('SETTINGS_MODAL')}
-              icon='change'/>
-            <Icon 
-              onClick={() => props.openModal('SEARCH_MODAL')}
-              icon='search'/>
-          </ButtonContainer>
-          <ButtonContainer>
-            <Icon 
-              onClick={() => props.openModal('ALERTS_MODAL')}
-              icon='alert'/>
-            <Icon 
-              onClick={() => props.openModal('SETTINGS_MODAL')}
-              icon='settings'/>
-            <Icon 
-              onClick={() => props.openModal('SETTINGS_MODAL')}
-              icon='profile'/>
-          </ButtonContainer>
-      </AffirmationModule> */}
+      <AffirmationModule />
     </Container>
   )
 }

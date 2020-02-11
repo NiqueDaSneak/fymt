@@ -1,10 +1,8 @@
-import React, { useState, useEffect } from 'react'
+import React, { useContext, useEffect } from 'react'
 import styled from 'styled-components'
 import Images from '../../assets/imgs'
-import { useThunkReducer } from 'react-hook-thunk-reducer'
 import actions from '../../store/'
-import affirmationReducer from '../../store/reducers/affirmationReducer'
-// import { getCategories } from '../../store/actions/affirmationActions'
+import {AffirmationContext, ModalContext} from '../hoc/Store'
 
 const CategoryTitle = styled.p`
   font-size: 12pt;
@@ -42,50 +40,40 @@ const ButtonContainer = styled.div`
 `
 
 const AffirmationModule = (props) => {
-  const initialState = {
-    currentAffirmation: {
-      category: '',
-      text: ''
-    },
-    allAffirmations: [],
-    allCategories: [],
-    isAffirmationLoading: false,
-    isCategoryLoading: false
-  }
-  
-  const [state, dispatch] = useThunkReducer(affirmationReducer, initialState);
+  const [affirmationState, affirmationDispatch] = useContext(AffirmationContext)
+  const [modalState, modalDispatch] = useContext(ModalContext)
 
   useEffect(() => {
-    dispatch(actions.affirmations.loadAffirmations({random: true}))
-  }, [dispatch])
+    affirmationDispatch(actions.affirmations.loadAffirmations({random: true}))
+  }, [affirmationDispatch])
   
   return(
     <Container>
-    <CategoryTitle>{state.currentAffirmation.category}</CategoryTitle>
-    <AffirmationText>{state.currentAffirmation.text}</AffirmationText>
-      <ButtonContainer>
-        <Icon 
-          onClick={() => props.openModal('INFO_MODAL')}
-          icon='info'/>
-        <Icon 
-          onClick={() => dispatch(actions.affirmations.changeSameCategory())}
-          icon='change'/>
-        <Icon 
-          onClick={() => props.openModal('SEARCH_MODAL', state.allCategories)}
-          icon='search'/>
-      </ButtonContainer>
-      <ButtonContainer>
-        <Icon 
-          onClick={() => props.openModal('ALERTS_MODAL')}
-          icon='alert'/>
-        <Icon 
-          onClick={() => props.openModal('SETTINGS_MODAL')}
-          icon='settings'/>
-        <Icon 
-          onClick={() => props.openModal('SETTINGS_MODAL')}
-          icon='profile'/>
-      </ButtonContainer>
-    </Container>
+      <CategoryTitle>{affirmationState.currentAffirmation.category}</CategoryTitle>
+      <AffirmationText>{affirmationState.currentAffirmation.text}</AffirmationText>
+        <ButtonContainer>
+          <Icon 
+            onClick={() => modalDispatch(actions.modal.open('INFO_MODAL'))}
+            icon='info'/>
+          <Icon 
+            onClick={() => affirmationDispatch(actions.affirmations.changeSameCategory())}
+            icon='change'/>
+          <Icon 
+            onClick={() => modalDispatch(actions.modal.open('SEARCH_MODAL', affirmationState.allCategories))}
+            icon='search'/>
+        </ButtonContainer>
+        <ButtonContainer>
+          <Icon 
+            onClick={() => modalDispatch(actions.modal.open('ALERTS_MODAL'))}
+            icon='alert'/>
+          <Icon 
+            onClick={() => modalDispatch(actions.modal.open('SETTINGS_MODAL'))}
+            icon='settings'/>
+          <Icon 
+            onClick={() => modalDispatch(actions.modal.open('SETTINGS_MODAL'))}
+            icon='profile'/>
+        </ButtonContainer>
+      </Container>
   )
 }
 
