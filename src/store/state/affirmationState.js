@@ -7,6 +7,7 @@ const affirmationState = {
     allCategories: [],
     isAffirmationLoading: false,
     isCategoryLoading: false,
+    fullScreen: false
 }
 
 export default affirmationState

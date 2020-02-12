@@ -18,6 +18,8 @@ const reducer = (state, action) => {
       return {...state, allCategories: action.affirmationCategories}
     case 'CHANGE_AFF_SAME_CAT':
       return {...state, currentAffirmation: action.payload}
+    case 'TOGGLE_FULL_SCREEN':
+      return {...state, fullScreen: !state.fullScreen}
     case 'test':
       console.log('test in reducer')
       return {...state}

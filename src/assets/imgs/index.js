@@ -11,6 +11,9 @@ import shanghai from './shanghai.png'
 import chevron from './chevron.svg'
 import change from './change.svg'
 import profile from './profile.svg'
+import expand from './expand.svg'
+import minimize from './minimize.svg'
+import shanghai2 from './shanghai2.png'
 
 const Images = {
   alert: bell,
@@ -20,14 +23,17 @@ const Images = {
   rain: umbrella,
   ocean: wheel,
   info: question,
+  chevron: chevron,
+  change: change,
+  profile: profile,
+  expand: expand,
+  minimize: minimize,
   background: {
     london: london,
     newyork: newyork,
     shanghai: shanghai,
+    shanghai2: shanghai2,
   },
-  chevron: chevron,
-  change: change,
-  profile: profile
 }
 
 export default Images

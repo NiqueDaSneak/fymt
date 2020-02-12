@@ -103,3 +103,9 @@ export const setNewCategory = newCategoryName => {
     dispatch(setAffirmation({text: matches[randomNum].affirmation, category: matches[randomNum].category}))
   }
 }
+
+export const toggleFullScreen = () => {
+  return {
+    type: 'TOGGLE_FULL_SCREEN'
+  }
+}

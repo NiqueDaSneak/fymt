@@ -6,7 +6,6 @@ import Admin from './views/Admin'
 
 import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom'
 import {AffirmationStore, ModalStore} from './components/hoc/Store'
-// import {, ModalContext} from '../components/hoc/Store'
 
 // import * as serviceWorker from '../serviceWorker'
 
@@ -17,7 +16,6 @@ const GlobalStyle = createGlobalStyle`
     font-family: 'Montserrat', sans-serif;
     margin: 0;
     min-height:100%;
-    height:100%;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }

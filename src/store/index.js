@@ -1,6 +1,6 @@
 import { getAffirmationCategories, submitNewAffirmation } from "./actions/adminActions";
 import {openModal, closeModal} from './actions/modalActions'
-import {loadAffirmations, getCategories, changeSameCategory, setNewCategory} from './actions/affirmationActions'
+import {loadAffirmations, getCategories, changeSameCategory, setNewCategory, toggleFullScreen} from './actions/affirmationActions'
 
 const actions = {
   admin: {
@@ -15,7 +15,8 @@ const actions = {
     loadAffirmations: loadAffirmations,
     getCategories: getCategories,
     changeSameCategory: changeSameCategory,
-    setNewCategory: setNewCategory
+    setNewCategory: setNewCategory,
+    toggleFullScreen: toggleFullScreen
   }
 }
 
