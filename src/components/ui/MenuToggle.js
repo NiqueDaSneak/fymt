@@ -3,7 +3,6 @@ import styled from 'styled-components'
 import Images from '../../assets/imgs'
 
 const Container = styled.div`
-  background-color: white;
   display: flex;
   width: 100vw;
   justify-content: space-evenly;

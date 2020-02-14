@@ -5,7 +5,8 @@ import actions from '../../store/'
 import {AffirmationContext, ModalContext} from '../hoc/Store'
 
 const Container = styled.div`
-  background-color: white;
+  /* background-color: white; */
+  width: 100%;
   justify-content: space-evenly;
   display: flex;
   flex-direction: column;
@@ -18,14 +19,21 @@ const Container = styled.div`
 const Icon = styled.img.attrs(props => ({
   src: Images[props.icon]
 }))`
-  width: 10vw;
+  width: 14%;
+  height: 80%;
+  /* background-color: red; */
+  padding: 3%;
+  /* border-radius: 16px;
+  background: #008c00;
+  box-shadow: 5px 5px 11px #005f00, -5px -5px 11px #00b900; */
 `
 
 const ButtonContainer = styled.div`
   display: flex;
-  justify-content: space-evenly;
-  width: 100%;
-  height: 5vh;
+  justify-content: space-between;
+  width: 80%;
+  height: 30%;
+  border-radius: 50px;
 `
 
 const AffirmationModule = (props) => {

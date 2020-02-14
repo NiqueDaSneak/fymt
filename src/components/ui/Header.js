@@ -4,10 +4,12 @@ import { AffirmationContext } from '../hoc/Store'
 
 const Container = styled.div`
   height: ${props => props.visible ? '10%' : '0%'};
-  width: 100%;
+  width: 20%;
   background-color: white;
   transition: height 1s ease-in-out;
-  box-shadow: 0px 1px 4px 0px rgba(0,0,0,0.75);
+  border-radius: 16px;
+  background: #606564;
+  box-shadow: 5px 5px 11px #414544, -5px -5px 11px #7f8584;
 `
 
 const Header = props => {

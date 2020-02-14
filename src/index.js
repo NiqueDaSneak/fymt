@@ -12,13 +12,13 @@ import {AffirmationStore, ModalStore} from './components/hoc/Store'
 const GlobalStyle = createGlobalStyle`
   * { padding: 0; margin: 0; }
   html, body {
-    background: black;
+    background: #606564;
     font-family: 'Montserrat', sans-serif;
     margin: 0;
     min-height:100%;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    padding-bottom: 4%;
+    /* padding-bottom: 4%; */
   }
 `
 

@@ -5,23 +5,26 @@ import { AffirmationContext } from '../hoc/Store'
 import Images from '../../assets/imgs'
 
 const BackgroundImage = styled.div`
-  height: ${props => props.fullScreen ? '100%' : '58%'};
-  width: 100vw;
+  height: ${props => props.fullScreen ? '100%' : '20%'};
+  width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
-  transition: height 1s ease-in-out;
+  transition: all 1s ease-in-out;
   background-image: ${props => `url(${props.image})`};
   background-position: center;
   flex-direction: column;
 `
 
 const ContentCard = styled.div`
-  background-color: white;
+  background-color: #ffffff6b;
+  backdrop-filter: blur(4px);
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 80%;
+  width: 100%;
+  height: ${props => props.fullScreen ? '20%' : '100%'};
+  transition: height 1s ease-in-out;
   padding-top: 4%;
   padding-bottom: 4%;
 `
@@ -44,9 +47,8 @@ const AffirmationText = styled.p`
 const Icon = styled.img.attrs(props => ({
   src: props.isExpand ? Images.expand : Images.minimize
 }))`
-  width: 16vw;
-  height: 16vw;
-  background-color: white;
+  width: 10vw;
+  height: 10vw;
 `
 
 const ExpandableContentArea = () => {
@@ -70,7 +72,7 @@ const ExpandableContentArea = () => {
 
   return(
     <BackgroundImage image={imageValue} fullScreen={affirmationState.fullScreen}>
-      <ContentCard>
+      <ContentCard fullScreen={affirmationState.fullScreen}>
         <CategoryTitle>{affirmationState.currentAffirmation.category}</CategoryTitle>
         <AffirmationText>{affirmationState.currentAffirmation.text}</AffirmationText>
         <Icon isExpand={isExpand} onClick={() => clickHandler()}/>
