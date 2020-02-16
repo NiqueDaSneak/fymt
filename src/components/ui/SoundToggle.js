@@ -49,6 +49,7 @@ const SoundToggle = (props) => {
         <p>Rain</p>
       </IconContainer>
     </Container>
+    
   )
 }
 

@@ -1,7 +1,7 @@
 import React, {useState, useEffect, useContext} from 'react'
 import styled from 'styled-components'
 import actions from '../../store'
-import { AffirmationContext } from '../hoc/Store'
+import { GlobalContext } from '../hoc/Store'
 import Images from '../../assets/imgs'
 
 const BackgroundImage = styled.div`
@@ -52,7 +52,7 @@ const Icon = styled.img.attrs(props => ({
 `
 
 const ExpandableContentArea = () => {
-  const [affirmationState, affirmationDispatch] = useContext(AffirmationContext)
+  const [affirmationState, affirmationDispatch] = useContext(GlobalContext)
   const images = [Images.background.shanghai, Images.background.london, Images.background.newyork]
   const [imageValue, setImageValue] = useState(images[0])
   const [pageLoaded, setPageLoaded] = useState(false)

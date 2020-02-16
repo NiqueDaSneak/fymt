@@ -1,4 +1,4 @@
-const affirmationState = {
+const initialState = {
     currentAffirmation: {
       category: '',
       text: ''
@@ -7,7 +7,11 @@ const affirmationState = {
     allCategories: [],
     isAffirmationLoading: false,
     isCategoryLoading: false,
-    fullScreen: false
+    fullScreen: false,
+    modalOpen: false,
+    modalType: null,
+    modalData: []
+  
 }
 
-export default affirmationState
+export default initialState

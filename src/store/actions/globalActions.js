@@ -1,5 +1,19 @@
 import {affirmationRef, affirmationCategoryRef, categoryArray} from '../../firebase'
 
+export const openModal = (modalType, modalData) => {
+  return {
+    type: 'OPEN_MODAL', 
+    modalType: modalType,
+    modalData: modalData
+  }
+}
+
+export const closeModal = () => {
+  return {
+    type: 'CLOSE_MODAL', 
+  }
+}
+
 export const loadAffirmations = payload => {
   return (dispatch, getState) => {
     dispatch(loadAffirmationsStart())

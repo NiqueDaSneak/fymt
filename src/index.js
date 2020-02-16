@@ -1,11 +1,10 @@
-import React, {useReducer} from 'react'
+import React from 'react'
 import ReactDOM from 'react-dom'
 import styled, {createGlobalStyle} from 'styled-components'
 import MainApp from './views/MainApp'
 import Admin from './views/Admin'
-
 import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom'
-import {AffirmationStore, ModalStore} from './components/hoc/Store'
+import {GlobalStore} from './components/hoc/Store'
 
 // import * as serviceWorker from '../serviceWorker'
 
@@ -28,11 +27,9 @@ const AppRouter = () => {
       <GlobalStyle/>
       <Switch>
         <Route exact path='/'>
-          <ModalStore>
-            <AffirmationStore>
+            <GlobalStore>
               <MainApp/>
-            </AffirmationStore>
-          </ModalStore>
+            </GlobalStore>
         </Route>
         <Route path='/admin' component={Admin}>
         </Route>
