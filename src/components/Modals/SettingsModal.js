@@ -5,6 +5,7 @@ import SoundToggle from '../ui/SoundToggle'
 import Switch from '../ui/Switch'
 import Sound from 'react-sound'
 import { GlobalContext } from '../hoc/Store'
+import actions from '../../store/'
 
 const Container = styled.div`
   height: 40%;
@@ -50,18 +51,20 @@ const HeaderIcon = styled.img.attrs(props => ({
 
 const SettingsModal = props => {
   const [soundActive, setSoundActive] = useState(false)
-  const [isLoading, setLoading] = useState(false)
-  const [whichSound, setWhichSound] = useState('ocean')
   const [state, dispatch] = useContext(GlobalContext)
+
+  const switchHandler = status => {
+    setSoundActive(status)
+    dispatch(actions.setWhichMp3())
+  }
 
   return(
     <Container active={props.active}>
       <HeaderIcon isLoading={state.soundIsLoading}/>
       <p>Toggle Sound</p>
-      <Switch onChange={status => setSoundActive(status)}/>
+      <Switch onChange={status => switchHandler(status)}/>
       <p>Choose A Sound Option</p>
-      <SoundToggle />
-      {/* <audio className='audio-element' src='../../assets/mp3/ocean.mp3' /> */}
+      <SoundToggle setMp3={val => dispatch(actions.setWhichMp3(val))}/>
       <Sound
         url={'ocean.mp3'}
         playStatus={state.whichMp3Active === 'ocean' && soundActive === true ? Sound.status.PLAYING : Sound.status.STOPPED}
@@ -69,13 +72,13 @@ const SettingsModal = props => {
         // onLoading={() => dispatch(setSoundIsLoading(true))}
         // onPlaying={() => dispatch(setSoundIsLoading(false))}
         onFinishedPlaying={e => console.log(e)} />
-      {/* <Sound
+      <Sound
         url={'forest.mp3'}
         playStatus={state.whichMp3Active === 'forest' && soundActive === true ? Sound.status.PLAYING : Sound.status.STOPPED}
         playFromPosition={0}
-        onLoading={() => dispatch(setSoundIsLoading(true))}
-        onPlaying={() => dispatch(setSoundIsLoading(false))}
-        onFinishedPlaying={e => console.log(e)} /> */}
+        // onLoading={() => dispatch(setSoundIsLoading(true))}
+        // onPlaying={() => dispatch(setSoundIsLoading(false))}
+        onFinishedPlaying={e => console.log(e)} />
     </Container>
   )
 }

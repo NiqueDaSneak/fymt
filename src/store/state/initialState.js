@@ -12,8 +12,7 @@ const initialState = {
   modalType: null,
   modalData: [],
   soundActive: false,
-  // soundIsLoading: false,
-  whichMp3Active: 'ocean',
+  whichMp3Active: '',
 }
 
 export default initialState

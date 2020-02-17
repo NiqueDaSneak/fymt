@@ -1,5 +1,5 @@
 import { getAffirmationCategories, submitNewAffirmation } from "./actions/adminActions"
-import {loadAffirmations, getCategories, changeSameCategory, setNewCategory, toggleFullScreen, openModal, closeModal} from './actions/globalActions'
+import {loadAffirmations, getCategories, changeSameCategory, setNewCategory, toggleFullScreen, openModal, closeModal, setWhichMp3} from './actions/globalActions'
 
 const actions = {
   admin: {
@@ -12,7 +12,8 @@ const actions = {
   setNewCategory: setNewCategory,
   toggleFullScreen: toggleFullScreen,
   openModal: openModal,
-  closeModal: closeModal
+  closeModal: closeModal,
+  setWhichMp3: setWhichMp3
 }
 
 export default actions

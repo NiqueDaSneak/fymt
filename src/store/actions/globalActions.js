@@ -123,3 +123,17 @@ export const toggleFullScreen = () => {
     type: 'TOGGLE_FULL_SCREEN'
   }
 }
+
+export const setWhichMp3 = val => {
+  if (val === undefined) {
+    return {
+      type: 'SET_WHICH_MP3',
+      whichMp3: ''
+    }
+  } else {
+    return {
+      type: 'SET_WHICH_MP3',
+      whichMp3: val
+    }
+  }
+}
