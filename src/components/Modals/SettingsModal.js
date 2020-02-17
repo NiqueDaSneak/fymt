@@ -51,11 +51,12 @@ const HeaderIcon = styled.img.attrs(props => ({
 const SettingsModal = props => {
   const [soundActive, setSoundActive] = useState(false)
   const [isLoading, setLoading] = useState(false)
-  const [affirmationState, affirmationDispatch] = useContext(GlobalContext)
+  const [whichSound, setWhichSound] = useState('ocean')
+  const [state, dispatch] = useContext(GlobalContext)
 
   return(
     <Container active={props.active}>
-      <HeaderIcon isLoading={isLoading}/>
+      <HeaderIcon isLoading={state.soundIsLoading}/>
       <p>Toggle Sound</p>
       <Switch onChange={status => setSoundActive(status)}/>
       <p>Choose A Sound Option</p>
@@ -63,18 +64,18 @@ const SettingsModal = props => {
       {/* <audio className='audio-element' src='../../assets/mp3/ocean.mp3' /> */}
       <Sound
         url={'ocean.mp3'}
-        playStatus={soundActive ? Sound.status.PLAYING : Sound.status.STOPPED}
+        playStatus={state.whichMp3Active === 'ocean' && soundActive === true ? Sound.status.PLAYING : Sound.status.STOPPED}
         playFromPosition={0 /* in milliseconds */}
-        onLoading={() => setLoading(true)}
-        onPlaying={() => setLoading(false)}
+        // onLoading={() => dispatch(setSoundIsLoading(true))}
+        // onPlaying={() => dispatch(setSoundIsLoading(false))}
         onFinishedPlaying={e => console.log(e)} />
-      <Sound
-        url={'ocean.mp3'}
-        playStatus={soundActive ? Sound.status.PLAYING : Sound.status.STOPPED}
-        playFromPosition={0 /* in milliseconds */}
-        onLoading={() => setLoading(true)}
-        onPlaying={() => setLoading(false)}
-        onFinishedPlaying={e => console.log(e)} />
+      {/* <Sound
+        url={'forest.mp3'}
+        playStatus={state.whichMp3Active === 'forest' && soundActive === true ? Sound.status.PLAYING : Sound.status.STOPPED}
+        playFromPosition={0}
+        onLoading={() => dispatch(setSoundIsLoading(true))}
+        onPlaying={() => dispatch(setSoundIsLoading(false))}
+        onFinishedPlaying={e => console.log(e)} /> */}
     </Container>
   )
 }
