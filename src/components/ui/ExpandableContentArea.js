@@ -52,7 +52,7 @@ const Icon = styled.img.attrs(props => ({
 `
 
 const ExpandableContentArea = () => {
-  const [affirmationState, affirmationDispatch] = useContext(GlobalContext)
+  const [state, dispatch] = useContext(GlobalContext)
   const images = [Images.background.shanghai, Images.background.london, Images.background.newyork]
   const [imageValue, setImageValue] = useState(images[0])
   const [pageLoaded, setPageLoaded] = useState(false)
@@ -66,15 +66,15 @@ const ExpandableContentArea = () => {
   }, [pageLoaded, images])
 
   const clickHandler = () => {
-    affirmationDispatch(actions.affirmations.toggleFullScreen())
+    dispatch(actions.toggleFullScreen())
     setIcon(!isExpand)
   }
 
   return(
-    <BackgroundImage image={imageValue} fullScreen={affirmationState.fullScreen}>
-      <ContentCard fullScreen={affirmationState.fullScreen}>
-        <CategoryTitle>{affirmationState.currentAffirmation.category}</CategoryTitle>
-        <AffirmationText>{affirmationState.currentAffirmation.text}</AffirmationText>
+    <BackgroundImage image={imageValue} fullScreen={state.fullScreen}>
+      <ContentCard fullScreen={state.fullScreen}>
+        <CategoryTitle>{state.currentAffirmation.category}</CategoryTitle>
+        <AffirmationText>{state.currentAffirmation.text}</AffirmationText>
         <Icon isExpand={isExpand} onClick={() => clickHandler()}/>
       </ContentCard>
     </BackgroundImage>
