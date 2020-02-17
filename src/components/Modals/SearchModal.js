@@ -1,7 +1,7 @@
 import React, { useContext } from 'react'
 import styled from 'styled-components'
 import actions from '../../store'
-import {AffirmationContext} from '../hoc/Store'
+import {GlobalContext} from '../hoc/Store'
 
 const Container = styled.div`
   display: flex;
@@ -28,7 +28,7 @@ const Tag = styled.span`
 `
 
 const SearchModal = props => {
-  const [state, dispatch] = useContext(AffirmationContext)
+  const [state, dispatch] = useContext(GlobalContext)
 
   const Tags = props.categories ? props.categories.map(category => {
     return <Tag onClick={(event) => dispatch(actions.affirmations.setNewCategory(event.target.innerHTML))} key={category}>{category}</Tag>

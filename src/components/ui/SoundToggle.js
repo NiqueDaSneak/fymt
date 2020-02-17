@@ -36,19 +36,20 @@ const Icon = styled.img.attrs(props => ({
 const SoundToggle = (props) => {
   return(
     <Container>
-      <IconContainer >
+      <IconContainer onClick={() => props.setMp3('ocean')}>
         <Icon ocean/>
         <p>Ocean</p>
       </IconContainer>
-      <IconContainer >
+      <IconContainer onClick={() => props.setMp3('forest')}>
         <Icon forest/>
         <p>Forest</p>
       </IconContainer>
-      <IconContainer >
+      <IconContainer onClick={() => props.setMp3('rain')}>
         <Icon rain/>
         <p>Rain</p>
       </IconContainer>
     </Container>
+    
   )
 }
 

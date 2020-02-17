@@ -1,5 +1,19 @@
 import {affirmationRef, affirmationCategoryRef, categoryArray} from '../../firebase'
 
+export const openModal = (modalType, modalData) => {
+  return {
+    type: 'OPEN_MODAL', 
+    modalType: modalType,
+    modalData: modalData
+  }
+}
+
+export const closeModal = () => {
+  return {
+    type: 'CLOSE_MODAL', 
+  }
+}
+
 export const loadAffirmations = payload => {
   return (dispatch, getState) => {
     dispatch(loadAffirmationsStart())
@@ -107,5 +121,19 @@ export const setNewCategory = newCategoryName => {
 export const toggleFullScreen = () => {
   return {
     type: 'TOGGLE_FULL_SCREEN'
+  }
+}
+
+export const setWhichMp3 = val => {
+  if (val === undefined) {
+    return {
+      type: 'SET_WHICH_MP3',
+      whichMp3: ''
+    }
+  } else {
+    return {
+      type: 'SET_WHICH_MP3',
+      whichMp3: val
+    }
   }
 }

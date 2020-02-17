@@ -66,7 +66,7 @@ input:checked + .slider:before {
 
 const Switch = (props) => (
   <SwitchContainer className="switch">
-    <input type="checkbox" />
+    <input onChange={event => props.onChange(event.target.checked)} type="checkbox" />
     <span className="slider round"></span>
   </SwitchContainer>
 )

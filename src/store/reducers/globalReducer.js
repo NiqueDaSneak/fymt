@@ -20,7 +20,13 @@ const reducer = (state, action) => {
       return {...state, currentAffirmation: action.payload}
     case 'TOGGLE_FULL_SCREEN':
       return {...state, fullScreen: !state.fullScreen}
-    case 'test':
+    case 'OPEN_MODAL':
+      return {...state, modalOpen: true, modalType: action.modalType, modalData: action.modalData}
+    case 'CLOSE_MODAL':
+      return {...state, modalOpen: false, modalType: null}  
+    case 'SET_WHICH_MP3':
+      return {...state, whichMp3Active: action.whichMp3}
+      case 'test':
       console.log('test in reducer')
       return {...state}
     default:

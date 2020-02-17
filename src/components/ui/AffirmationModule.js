@@ -2,7 +2,7 @@ import React, { useContext, useEffect } from 'react'
 import styled from 'styled-components'
 import Images from '../../assets/imgs'
 import actions from '../../store/'
-import {AffirmationContext, ModalContext} from '../hoc/Store'
+import {GlobalContext, ModalContext} from '../hoc/Store'
 
 const Container = styled.div`
   /* background-color: white; */
@@ -37,35 +37,34 @@ const ButtonContainer = styled.div`
 `
 
 const AffirmationModule = (props) => {
-  const [affirmationState, affirmationDispatch] = useContext(AffirmationContext)
-  const [modalState, modalDispatch] = useContext(ModalContext)
+  const [state, dispatch] = useContext(GlobalContext)
 
   useEffect(() => {
-    affirmationDispatch(actions.affirmations.loadAffirmations({random: true}))
-  }, [affirmationDispatch])
+    dispatch(actions.loadAffirmations({random: true}))
+  }, [dispatch])
   
   return(
-    <Container fullScreen={affirmationState.fullScreen}>
+    <Container fullScreen={state.fullScreen}>
       <ButtonContainer>
         <Icon 
-          onClick={() => modalDispatch(actions.modal.open('INFO_MODAL'))}
+          onClick={() => dispatch(actions.openModal('INFO_MODAL'))}
           icon='info'/>
         <Icon 
-          onClick={() => affirmationDispatch(actions.affirmations.changeSameCategory())}
+          onClick={() => dispatch(actions.changeSameCategory())}
           icon='change'/>
         <Icon 
-          onClick={() => modalDispatch(actions.modal.open('SEARCH_MODAL', affirmationState.allCategories))}
+          onClick={() => dispatch(actions.openModal('SEARCH_MODAL', state.allCategories))}
           icon='search'/>
       </ButtonContainer>
       <ButtonContainer>
         <Icon 
-          onClick={() => modalDispatch(actions.modal.open('ALERTS_MODAL'))}
+          onClick={() => dispatch(actions.openModal('ALERTS_MODAL'))}
           icon='alert'/>
         <Icon 
-          onClick={() => modalDispatch(actions.modal.open('SETTINGS_MODAL'))}
+          onClick={() => dispatch(actions.openModal('SETTINGS_MODAL'))}
           icon='settings'/>
         <Icon 
-          onClick={() => modalDispatch(actions.modal.open('SETTINGS_MODAL'))}
+          onClick={() => dispatch(actions.openModal('SETTINGS_MODAL'))}
           icon='profile'/>
       </ButtonContainer>
     </Container>

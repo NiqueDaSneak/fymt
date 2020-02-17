@@ -2,7 +2,7 @@ import React, {useContext} from 'react';
 import actions from '../store/'
 import Modal from '../components/Modals/Modal';
 import Header from '../components/ui/Header'
-import {ModalContext} from '../components/hoc/Store'
+import {GlobalContext} from '../components/hoc/Store'
 import styled from 'styled-components'
 import ExpandableContentArea from '../components/ui/ExpandableContentArea'
 import MenuToggle from '../components/ui/MenuToggle'
@@ -18,15 +18,15 @@ const Container = styled.div`
 `
 
 const MainApp = () => {
-  const [modalState, modalDispatch] = useContext(ModalContext)
+  const [state, dispatch] = useContext(GlobalContext)
 
   return (
     <Container>
       <Modal
-        close={() => modalDispatch(actions.modal.close())}
-        open={modalState.modalOpen} 
-        modalType={modalState.modalType}
-        modalData={modalState.modalData} />
+        close={() => dispatch(actions.closeModal())}
+        open={state.modalOpen} 
+        modalType={state.modalType}
+        modalData={state.modalData} />
       <Header />
       <ExpandableContentArea />
       <AffirmationModule />

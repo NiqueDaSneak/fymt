@@ -1,6 +1,6 @@
 import React, {useContext} from 'react'
 import styled, {keyframes} from 'styled-components'
-import { AffirmationContext } from '../hoc/Store'
+import { GlobalContext } from '../hoc/Store'
 
 const fadeIn = keyframes`
   from {
@@ -18,9 +18,9 @@ const Container = styled.div`
   /* animation-name: ${fadeIn};
   animation-duration: 5s;
   animation-timing-function: linear;
-  animation-delay: 2s;
+  animation-delay: 0s;
   animation-iteration-count: 1;
-  animation-direction: alternate; */
+  animation-direction: normal; */
   background-color: white;
   transition: height 1s ease-in-out;
   border-radius: 16px;
@@ -29,7 +29,7 @@ const Container = styled.div`
 `
 
 const Header = props => {
-  const [affirmationState, affirmationDispatch] = useContext(AffirmationContext)
+  const [affirmationState, affirmationDispatch] = useContext(GlobalContext)
 
   return(
     <Container visible={!affirmationState.fullScreen}></Container>
