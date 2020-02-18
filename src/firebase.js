@@ -1,14 +1,14 @@
 import * as firebase from 'firebase'
 
 const config = {
-    apiKey: "AIzaSyCDHwc5xIgy_85VilRSBx8MU7b6DhhnVEs",
+    apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
     authDomain: "fymt-4.firebaseapp.com",
     databaseURL: "https://fymt-4.firebaseio.com",
     projectId: "fymt-4",
     storageBucket: "fymt-4.appspot.com",
-    messagingSenderId: "127457857240",
-    appId: "1:127457857240:web:f132d18db01b73f09d51ad",
-    measurementId: "G-BVNB2B3KG5"
+    messagingSenderId: process.env.REACT_APP_FIREBASE_MESSAGING_SENDER_ID,
+    appId: process.env.REACT_APP_FIREBASE_APP_ID,
+    measurementId:  process.env.REACT_APP_FIREBASE_MEASUREMENT_ID
 }
 
 firebase.initializeApp(config)
