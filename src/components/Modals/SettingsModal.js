@@ -50,11 +50,11 @@ const HeaderIcon = styled.img.attrs(props => ({
 `
 
 const SettingsModal = props => {
-  const [soundActive, setSoundActive] = useState(false)
+  // const [soundActive, setSoundActive] = useState(false)
   const [state, dispatch] = useContext(GlobalContext)
 
   const switchHandler = status => {
-    setSoundActive(status)
+    dispatch(actions.toggleSoundActive(status))
     dispatch(actions.setWhichMp3())
   }
 
@@ -64,17 +64,17 @@ const SettingsModal = props => {
       <p>Toggle Sound</p>
       <Switch onChange={status => switchHandler(status)}/>
       <p>Choose A Sound Option</p>
-      <SoundToggle setMp3={val => dispatch(actions.setWhichMp3(val))}/>
+      <SoundToggle activeAudio={state.whichMp3Active} setMp3={val => dispatch(actions.setWhichMp3(val))}/>
       <Sound
         url={'ocean.mp3'}
-        playStatus={state.whichMp3Active === 'ocean' && soundActive === true ? Sound.status.PLAYING : Sound.status.STOPPED}
+        playStatus={state.whichMp3Active === 'ocean' && state.soundActive === true ? Sound.status.PLAYING : Sound.status.STOPPED}
         playFromPosition={0 /* in milliseconds */}
-        // onLoading={() => dispatch(setSoundIsLoading(true))}
-        // onPlaying={() => dispatch(setSoundIsLoading(false))}
+        // onLoading={() => console.log('loading' + state.soundActive)}
+        // onPlaying={() => console.log('playing' + state.soundActive)}
         onFinishedPlaying={e => console.log(e)} />
       <Sound
         url={'forest.mp3'}
-        playStatus={state.whichMp3Active === 'forest' && soundActive === true ? Sound.status.PLAYING : Sound.status.STOPPED}
+        playStatus={state.whichMp3Active === 'forest' && state.soundActive === true ? Sound.status.PLAYING : Sound.status.STOPPED}
         playFromPosition={0}
         // onLoading={() => dispatch(setSoundIsLoading(true))}
         // onPlaying={() => dispatch(setSoundIsLoading(false))}

@@ -31,7 +31,7 @@ const SearchModal = props => {
   const [state, dispatch] = useContext(GlobalContext)
 
   const Tags = props.categories ? props.categories.map(category => {
-    return <Tag onClick={(event) => dispatch(actions.affirmations.setNewCategory(event.target.innerHTML))} key={category}>{category}</Tag>
+    return <Tag onClick={(event) => dispatch(actions.setNewCategory(event.target.innerHTML))} key={category}>{category}</Tag>
   }) : []
   
   return(

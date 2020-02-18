@@ -26,6 +26,8 @@ const reducer = (state, action) => {
       return {...state, modalOpen: false, modalType: null}  
     case 'SET_WHICH_MP3':
       return {...state, whichMp3Active: action.whichMp3}
+    case 'TOGGLE_SOUND_ACTIVE':
+      return {...state, soundActive: action.isActive}
       case 'test':
       console.log('test in reducer')
       return {...state}

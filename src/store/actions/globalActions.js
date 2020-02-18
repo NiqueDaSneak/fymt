@@ -137,3 +137,10 @@ export const setWhichMp3 = val => {
     }
   }
 }
+
+export const toggleSoundActive = val => {
+  return {
+    type: 'TOGGLE_SOUND_ACTIVE',
+    isActive: val
+  }
+}

@@ -13,9 +13,11 @@ const IconContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 30%;
+  width: 33%;
   flex-direction: column;
   justify-content: space-evenly;
+  background-color: ${props => props.active ? 'grey' : 'white'};
+  transition: all 1s ease-in-out;
   &:nth-of-type(2) {
     border-left: 1px solid black;
     border-right: 1px solid black;
@@ -36,15 +38,15 @@ const Icon = styled.img.attrs(props => ({
 const SoundToggle = (props) => {
   return(
     <Container>
-      <IconContainer onClick={() => props.setMp3('ocean')}>
+      <IconContainer active={props.activeAudio === 'ocean'}onClick={() => props.setMp3('ocean')}>
         <Icon ocean/>
         <p>Ocean</p>
       </IconContainer>
-      <IconContainer onClick={() => props.setMp3('forest')}>
+      <IconContainer active={props.activeAudio === 'forest'}onClick={() => props.setMp3('forest')}>
         <Icon forest/>
         <p>Forest</p>
       </IconContainer>
-      <IconContainer onClick={() => props.setMp3('rain')}>
+      <IconContainer active={props.activeAudio === 'rain'}onClick={() => props.setMp3('rain')}>
         <Icon rain/>
         <p>Rain</p>
       </IconContainer>
